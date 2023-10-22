@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>  Dashboards  | Skote - Admin & Dashboard Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description"/>
+    <meta content="Themesbrand" name="author"/>
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="https://blacksatta73.github.io/site/assets/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/css/toastr.css" rel="stylesheet"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+          integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+<link href="https://blacksatta73.github.io/site/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet"
+          type="text/css">
+    <link href="https://blacksatta73.github.io/site/assets/libs/select2/select2.min.css" rel="stylesheet" type="text/css"/>
+
+<!-- Bootstrap Css -->
+<link href="https://blacksatta73.github.io/site/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+<!-- Icons Css -->
+<link href="https://blacksatta73.github.io/site/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+<!-- App Css-->
+<link href="https://blacksatta73.github.io/site/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+<!-- Bootstrap Css -->
+    <link href="https://blacksatta73.github.io/site/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet"
+          type="text/css"/>
+    <!-- Icons Css -->
+    <link href="https://blacksatta73.github.io/site/assets/css/icons.min.css" rel="stylesheet" type="text/css"/>
+    <!-- App Css-->
+    <link href="https://blacksatta73.github.io/site/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css"/>
+    <link href="https://blacksatta73.github.io/site/assets/css/custom.css" id="app-style" rel="stylesheet" type="text/css"/>
+
+</head>
+
+    <body data-sidebar="dark">
+        <!-- Begin page -->
+    <div id="layout-wrapper">
+    <header id="page-topbar">
+    <div class="navbar-header">
+        <div class="d-flex">
+            <!-- LOGO -->
+            <div class="navbar-brand-box">
+                <a href="https://blacksatta73.github.io/site/" class="logo logo-dark">
+                    <span class="logo-sm">
+                        <img src="https://blacksatta73.github.io/site/assets/images/users/logo.png" alt="" height="40">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="https://blacksatta73.github.io/site/assets/images/users/name.png" alt="" height="40">
+                    </span>
+                </a>
+
+                <a href="https://blacksatta73.github.io/site/" class="logo logo-light">
+                    <span class="logo-sm">
+                        <img src="https://blacksatta73.github.io/site/assets/images/users/logo.png" alt="" height="40">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="https://blacksatta73.github.io/site/assets/images/users/name.png" alt="" height="40">
+                    </span>
+                </a>
+            </div>
+
+            <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect" id="vertical-menu-btn">
+                <i class="fa fa-fw fa-bars"></i>
+            </button>
+
+            <!-- App Search-->
+        </div>
+
+        <div class="d-flex">
+
+
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="rounded-circle header-profile-user"
+                         src="https://blacksatta73.github.io/site/assets/images/users/avatar-1.jpg"
+                         alt="Header Avatar">
+                    <span class="d-none d-xl-inline-block ms-1" key="t-henry">Black Satta</span>
+                    <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <!-- item-->
+
+                    <a class="dropdown-item d-block" href="#" data-bs-toggle="modal"
+                       data-bs-target=".change-password"><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span>Change Password</span></a>
+
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-danger" href="javascript:void();" onclick="logout()"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span></a>
+
+                    <!-- Your existing HTML elements for Firebase authentication (initialize Firebase SDK, login form, etc.) -->
+
+                    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js"></script>
+                    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js"></script>
+                    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js"></script>
+
+                    <!-- Your custom JavaScript code -->
+                    <script type="module" src="https://blacksatta73.github.io/site/services/firebase.js"></script>
+                    <script type="module">
+                        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+                        import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+                      
+                        // Firebase configuration
+                        const firebaseConfig = {
+                            apiKey: "AIzaSyC-Oh6DeFt43pBpj3q9WT84q5M39AfI6E0",
+                            authDomain: "kalyan-matka-user.firebaseapp.com",
+                            databaseURL: "https://kalyan-matka-user-default-rtdb.firebaseio.com",
+                            projectId: "kalyan-matka-user",
+                            storageBucket: "kalyan-matka-user.appspot.com",
+                            messagingSenderId: "548839805292",
+                            appId: "1:548839805292:web:72b844e70f4d9c57e8e349",
+                            measurementId: "G-EDNTZM7PWZ"
+                        };
+                      
+                        // Initialize Firebase
+                        const app = initializeApp(firebaseConfig);
+                        const auth = getAuth(app);
+                      
+                        // Function to handle Firebase logout
+                        window.logout = function(){
+                          signOut(auth)
+                            .then(() => {
+                              // Sign-out successful. Redirect or perform any additional actions here.
+                              window.location.href = "https://blacksatta73.github.io/site/";
+                              console.log("User signed out successfully");
+                            })
+                            .catch(error => {
+                              // An error happened. Handle the error here.
+                              console.error("Error during logout:", error);
+                            });
+                        }
+                      
+                        // Your existing code for handling authentication (login, etc.)
+                      </script>
+                    </div>
+            </div>
+
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
+                    <i class="bx bx-cog bx-spin"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<!--  Change-Password example -->
+<div class="modal fade change-password" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myLargeModalLabel">Change Password</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="change-password">
+                    <div class="mb-3">
+                        <label for="current_password">Current Password</label>
+                        <input id="current-password" type="password"
+                               class="form-control "
+                               name="current_password" autocomplete="current_password"
+                               placeholder="Enter Current Password" value="">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="newpassword">New Password</label>
+                        <input id="password" type="password"
+                               class="form-control " name="password"
+                               autocomplete="new_password" placeholder="Enter New Password">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="userpassword">Confirm Password</label>
+                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
+                               autocomplete="new_password" placeholder="Enter New Confirm password">
+                    </div>
+
+                    <div class="mt-3 d-grid">
+                        <button class="btn btn-primary waves-effect waves-light UpdatePassword"
+                                data-id="1"
+                                type="submit">Update Password
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+    <!-- ========== Left Sidebar Start ========== -->
+    <div class="vertical-menu">
+
+        <div data-simplebar class="h-100">
+    
+            <!--- Sidemenu -->
+            <div id="sidebar-menu">
+                <!-- Left Menu Start -->
+                <ul class="metismenu list-unstyled" id="side-menu">
+    
+                    <li>
+                        <a href="https://blacksatta73.github.io/site/dashboard" class="waves-effect">
+                            <i class="bx bx-home-circle"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+    
+    
+                    <li>
+                        <a href="https://blacksatta73.github.io/site/user/userList.html" class="waves-effect">
+                            <i class="bx bxs-user-detail"></i>
+                            <span>User Management</span>
+                        </a>
+                    </li>
+    
+    
+                    <li>
+    
+                        <a href="https://blacksatta73.github.io/site/markets/result.html" class="waves-effect">
+                            <i class="bx bx-bullseye"></i>
+                            <span>Declare Result</span>
+                        </a>
+                    </li>
+    
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bxs-report"></i>
+                            <span>Report Management</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="true">
+    
+                            <li><a href="https://blacksatta73.github.io/site/reports/bids.html">Users Bid History</a></li>
+                            <li><a href="https://blacksatta73.github.io/site/reports/sell.html">Customer Sell Report</a></li>
+                            <li><a href="https://blacksatta73.github.io/site/reports/wins.html">Winning Report</a></li>
+                            <li><a href="https://blacksatta73.github.io/site/reports/w_report.html">Bid Win Report</a></li>
+                            <li><a href="https://blacksatta73.github.io/site/reports/deposit_report.html">Auto Deposit History</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bxs-wallet"></i>
+                            <span>Wallet Management</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="true">
+    
+                            <li><a href="https://blacksatta73.github.io/site/wallet/withdraw_list.html">Withdraw Request</a></li>
+                            <li><a href="https://blacksatta73.github.io/site/wallet/show_add_funds.html">Add Fund (User Wallet)</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-bullseye"></i>
+                            <span>Games Management</span>
+                        </a>
+    
+                        <ul class="sub-menu" aria-expanded="true">
+                            <li><a href="https://blacksatta73.github.io/site/markets/game_name.html">Game Name</a></li>
+                            <li><a href="https://blacksatta73.github.io/site/markets/game_rates.html">Game Rates</a></li>
+                        </ul>
+    
+            
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-cog"></i>
+                            <span>Settings</span>
+                        </a>
+    
+                        <ul class="sub-menu" aria-expanded="true">
+                            <li><a href="https://blacksatta73.github.io/site/settings/main.html">Main Settings</a></li>
+                            <li><a href="https://blacksatta73.github.io/site/settings/contact.html">Contact Settings</a></li>
+                        </ul>
+    
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-bullseye"></i>
+                            <span>Starline Management</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="true">
+                            <li><a href="https://blacksatta73.github.io/site/starline/index.html">Game Name</a></li>
+                            <li><a href="https://blacksatta73.github.io/site/starline/starline_rate.html">Game Rates</a></li>
+                            <li><a href="https://blacksatta73.github.io/site/starline/bid_report.html">Bid History</a></li>
+                            <li><a href="https://blacksatta73.github.io/site/starline/show_result.html">Declare Result</a></li>
+                            <li><a href="https://blacksatta73.github.io/site/starline/sell_report.html">Starline Sell Report</a></li>
+                            <li><a href="https://blacksatta73.github.io/site/starline/win_report.html">Starline Winning Report</a></li>
+                        </ul>
+                    </li>
+    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+            <div class="page-content">
+
+                <div class="container-fluid">
+                        <div class="col-12 col-sm-12 col-lg-12">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-12 ">
+                    <div class="card">
+
+                        <div class="card-header">
+
+                        </div>
+
+                        <div class="card-body">
+
+
+                            <div class="row">
+                                <h5>Declare Result</h5>
+
+
+                                <div class="form-group col-md-4">
+                                    <label for="game" class="col-form-label">Game Name</label>
+                                    <select class="form-control" name="game" id="game" onchange="" required>
+                                        <option value="">Select Game Name</option>
+    
+                                                                            </select>
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="session" class="col-form-label">Session</label>
+
+                                    <select class="form-control" name="session" id="session" onchange="" required>
+                                        <option value="">Select Session</option>
+                                        <option value="open">Open</option>
+                                        <option value="close">Close</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <button onclick="showResultForm()" type="button"
+                                            class="btn btn-primary waves-light m-t-10 mtop_25"
+                                            style="margin-left: 10px;margin-top: 36px;">GO
+                                    </button>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="card display_none" id="result_form">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="mt-2">
+                                        <label class="form-label">Pana</label>
+                                        <select class="form-control" name="result_panel" id="result_panel"
+                                                onchange="showMe(this.value)" required>
+                                            <option value="">Select Pana</option>
+                                            <option value="000" data-select2-id="16">000</option>
+                                            <option value="100" data-select2-id="17">100</option>
+                                            <option value="110" data-select2-id="18">110</option>
+                                            <option value="111" data-select2-id="19">111</option>
+                                            <option value="112" data-select2-id="20">112</option>
+                                            <option value="113" data-select2-id="21">113</option>
+                                            <option value="114" data-select2-id="22">114</option>
+                                            <option value="115" data-select2-id="23">115</option>
+                                            <option value="116" data-select2-id="24">116</option>
+                                            <option value="117" data-select2-id="25">117</option>
+                                            <option value="118" data-select2-id="26">118</option>
+                                            <option value="119" data-select2-id="27">119</option>
+                                            <option value="120" data-select2-id="28">120</option>
+                                            <option value="121" data-select2-id="29">121</option>
+                                            <option value="122" data-select2-id="30">122</option>
+                                            <option value="123" data-select2-id="31">123</option>
+                                            <option value="124" data-select2-id="32">124</option>
+                                            <option value="125" data-select2-id="33">125</option>
+                                            <option value="126" data-select2-id="34">126</option>
+                                            <option value="127" data-select2-id="35">127</option>
+                                            <option value="128" data-select2-id="36">128</option>
+                                            <option value="129" data-select2-id="37">129</option>
+                                            <option value="130" data-select2-id="38">130</option>
+                                            <option value="133" data-select2-id="39">133</option>
+                                            <option value="134" data-select2-id="40">134</option>
+                                            <option value="135" data-select2-id="41">135</option>
+                                            <option value="136" data-select2-id="42">136</option>
+                                            <option value="137" data-select2-id="43">137</option>
+                                            <option value="138" data-select2-id="44">138</option>
+                                            <option value="139" data-select2-id="45">139</option>
+                                            <option value="140" data-select2-id="46">140</option>
+                                            <option value="144" data-select2-id="47">144</option>
+                                            <option value="145" data-select2-id="48">145</option>
+                                            <option value="146" data-select2-id="49">146</option>
+                                            <option value="147" data-select2-id="50">147</option>
+                                            <option value="148" data-select2-id="51">148</option>
+                                            <option value="149" data-select2-id="52">149</option>
+                                            <option value="150" data-select2-id="53">150</option>
+                                            <option value="155" data-select2-id="54">155</option>
+                                            <option value="156" data-select2-id="55">156</option>
+                                            <option value="157" data-select2-id="56">157</option>
+                                            <option value="158" data-select2-id="57">158</option>
+                                            <option value="159" data-select2-id="58">159</option>
+                                            <option value="160" data-select2-id="59">160</option>
+                                            <option value="166" data-select2-id="60">166</option>
+                                            <option value="167" data-select2-id="61">167</option>
+                                            <option value="168" data-select2-id="62">168</option>
+                                            <option value="169" data-select2-id="63">169</option>
+                                            <option value="170" data-select2-id="64">170</option>
+                                            <option value="177" data-select2-id="65">177</option>
+                                            <option value="178" data-select2-id="66">178</option>
+                                            <option value="179" data-select2-id="67">179</option>
+                                            <option value="180" data-select2-id="68">180</option>
+                                            <option value="188" data-select2-id="69">188</option>
+                                            <option value="189" data-select2-id="70">189</option>
+                                            <option value="190" data-select2-id="71">190</option>
+                                            <option value="199" data-select2-id="72">199</option>
+                                            <option value="200" data-select2-id="73">200</option>
+                                            <option value="220" data-select2-id="74">220</option>
+                                            <option value="222" data-select2-id="75">222</option>
+                                            <option value="223" data-select2-id="76">223</option>
+                                            <option value="224" data-select2-id="77">224</option>
+                                            <option value="225" data-select2-id="78">225</option>
+                                            <option value="226" data-select2-id="79">226</option>
+                                            <option value="227" data-select2-id="80">227</option>
+                                            <option value="228" data-select2-id="81">228</option>
+                                            <option value="229" data-select2-id="82">229</option>
+                                            <option value="230" data-select2-id="83">230</option>
+                                            <option value="233" data-select2-id="84">233</option>
+                                            <option value="234" data-select2-id="85">234</option>
+                                            <option value="235" data-select2-id="86">235</option>
+                                            <option value="236" data-select2-id="87">236</option>
+                                            <option value="237" data-select2-id="88">237</option>
+                                            <option value="238" data-select2-id="89">238</option>
+                                            <option value="239" data-select2-id="90">239</option>
+                                            <option value="240" data-select2-id="91">240</option>
+                                            <option value="244" data-select2-id="92">244</option>
+                                            <option value="245" data-select2-id="93">245</option>
+                                            <option value="246" data-select2-id="94">246</option>
+                                            <option value="247" data-select2-id="95">247</option>
+                                            <option value="248" data-select2-id="96">248</option>
+                                            <option value="249" data-select2-id="97">249</option>
+                                            <option value="250" data-select2-id="98">250</option>
+                                            <option value="255" data-select2-id="99">255</option>
+                                            <option value="256" data-select2-id="100">256</option>
+                                            <option value="257" data-select2-id="101">257</option>
+                                            <option value="258" data-select2-id="102">258</option>
+                                            <option value="259" data-select2-id="103">259</option>
+                                            <option value="260" data-select2-id="104">260</option>
+                                            <option value="266" data-select2-id="105">266</option>
+                                            <option value="267" data-select2-id="106">267</option>
+                                            <option value="268" data-select2-id="107">268</option>
+                                            <option value="269" data-select2-id="108">269</option>
+                                            <option value="270" data-select2-id="109">270</option>
+                                            <option value="277" data-select2-id="110">277</option>
+                                            <option value="278" data-select2-id="111">278</option>
+                                            <option value="279" data-select2-id="112">279</option>
+                                            <option value="280" data-select2-id="113">280</option>
+                                            <option value="288" data-select2-id="114">288</option>
+                                            <option value="289" data-select2-id="115">289</option>
+                                            <option value="290" data-select2-id="116">290</option>
+                                            <option value="299" data-select2-id="117">299</option>
+                                            <option value="300" data-select2-id="118">300</option>
+                                            <option value="330" data-select2-id="119">330</option>
+                                            <option value="333" data-select2-id="120">333</option>
+                                            <option value="334" data-select2-id="121">334</option>
+                                            <option value="335" data-select2-id="122">335</option>
+                                            <option value="336" data-select2-id="123">336</option>
+                                            <option value="337" data-select2-id="124">337</option>
+                                            <option value="338" data-select2-id="125">338</option>
+                                            <option value="339" data-select2-id="126">339</option>
+                                            <option value="340" data-select2-id="127">340</option>
+                                            <option value="344" data-select2-id="128">344</option>
+                                            <option value="345" data-select2-id="129">345</option>
+                                            <option value="346" data-select2-id="130">346</option>
+                                            <option value="347" data-select2-id="131">347</option>
+                                            <option value="348" data-select2-id="132">348</option>
+                                            <option value="349" data-select2-id="133">349</option>
+                                            <option value="350" data-select2-id="134">350</option>
+                                            <option value="355" data-select2-id="135">355</option>
+                                            <option value="356" data-select2-id="136">356</option>
+                                            <option value="357" data-select2-id="137">357</option>
+                                            <option value="358" data-select2-id="138">358</option>
+                                            <option value="359" data-select2-id="139">359</option>
+                                            <option value="360" data-select2-id="140">360</option>
+                                            <option value="366" data-select2-id="141">366</option>
+                                            <option value="367" data-select2-id="142">367</option>
+                                            <option value="368" data-select2-id="143">368</option>
+                                            <option value="369" data-select2-id="144">369</option>
+                                            <option value="370" data-select2-id="145">370</option>
+                                            <option value="377" data-select2-id="146">377</option>
+                                            <option value="378" data-select2-id="147">378</option>
+                                            <option value="379" data-select2-id="148">379</option>
+                                            <option value="380" data-select2-id="149">380</option>
+                                            <option value="388" data-select2-id="150">388</option>
+                                            <option value="389" data-select2-id="151">389</option>
+                                            <option value="390" data-select2-id="152">390</option>
+                                            <option value="399" data-select2-id="153">399</option>
+                                            <option value="400" data-select2-id="154">400</option>
+                                            <option value="440" data-select2-id="155">440</option>
+                                            <option value="444" data-select2-id="156">444</option>
+                                            <option value="445" data-select2-id="157">445</option>
+                                            <option value="446" data-select2-id="158">446</option>
+                                            <option value="447" data-select2-id="159">447</option>
+                                            <option value="448" data-select2-id="160">448</option>
+                                            <option value="449" data-select2-id="161">449</option>
+                                            <option value="450" data-select2-id="162">450</option>
+                                            <option value="455" data-select2-id="163">455</option>
+                                            <option value="456" data-select2-id="164">456</option>
+                                            <option value="457" data-select2-id="165">457</option>
+                                            <option value="458" data-select2-id="166">458</option>
+                                            <option value="459" data-select2-id="167">459</option>
+                                            <option value="460" data-select2-id="168">460</option>
+                                            <option value="466" data-select2-id="169">466</option>
+                                            <option value="467" data-select2-id="170">467</option>
+                                            <option value="468" data-select2-id="171">468</option>
+                                            <option value="469" data-select2-id="172">469</option>
+                                            <option value="470" data-select2-id="173">470</option>
+                                            <option value="477" data-select2-id="174">477</option>
+                                            <option value="478" data-select2-id="175">478</option>
+                                            <option value="479" data-select2-id="176">479</option>
+                                            <option value="480" data-select2-id="177">480</option>
+                                            <option value="488" data-select2-id="178">488</option>
+                                            <option value="489" data-select2-id="179">489</option>
+                                            <option value="490" data-select2-id="180">490</option>
+                                            <option value="499" data-select2-id="181">499</option>
+                                            <option value="500" data-select2-id="182">500</option>
+                                            <option value="550" data-select2-id="183">550</option>
+                                            <option value="555" data-select2-id="184">555</option>
+                                            <option value="556" data-select2-id="185">556</option>
+                                            <option value="557" data-select2-id="186">557</option>
+                                            <option value="558" data-select2-id="187">558</option>
+                                            <option value="559" data-select2-id="188">559</option>
+                                            <option value="560" data-select2-id="189">560</option>
+                                            <option value="566" data-select2-id="190">566</option>
+                                            <option value="567" data-select2-id="191">567</option>
+                                            <option value="568" data-select2-id="192">568</option>
+                                            <option value="569" data-select2-id="193">569</option>
+                                            <option value="570" data-select2-id="194">570</option>
+                                            <option value="577" data-select2-id="195">577</option>
+                                            <option value="578" data-select2-id="196">578</option>
+                                            <option value="579" data-select2-id="197">579</option>
+                                            <option value="580" data-select2-id="198">580</option>
+                                            <option value="588" data-select2-id="199">588</option>
+                                            <option value="589" data-select2-id="200">589</option>
+                                            <option value="590" data-select2-id="201">590</option>
+                                            <option value="599" data-select2-id="202">599</option>
+                                            <option value="600" data-select2-id="203">600</option>
+                                            <option value="660" data-select2-id="204">660</option>
+                                            <option value="666" data-select2-id="205">666</option>
+                                            <option value="667" data-select2-id="206">667</option>
+                                            <option value="668" data-select2-id="207">668</option>
+                                            <option value="669" data-select2-id="208">669</option>
+                                            <option value="670" data-select2-id="209">670</option>
+                                            <option value="677" data-select2-id="210">677</option>
+                                            <option value="678" data-select2-id="211">678</option>
+                                            <option value="679" data-select2-id="212">679</option>
+                                            <option value="680" data-select2-id="213">680</option>
+                                            <option value="688" data-select2-id="214">688</option>
+                                            <option value="689" data-select2-id="215">689</option>
+                                            <option value="690" data-select2-id="216">690</option>
+                                            <option value="699" data-select2-id="217">699</option>
+                                            <option value="700" data-select2-id="218">700</option>
+                                            <option value="770" data-select2-id="219">770</option>
+                                            <option value="777" data-select2-id="220">777</option>
+                                            <option value="778" data-select2-id="221">778</option>
+                                            <option value="779" data-select2-id="222">779</option>
+                                            <option value="780" data-select2-id="223">780</option>
+                                            <option value="788" data-select2-id="224">788</option>
+                                            <option value="789" data-select2-id="225">789</option>
+                                            <option value="790" data-select2-id="226">790</option>
+                                            <option value="799" data-select2-id="227">799</option>
+                                            <option value="800" data-select2-id="228">800</option>
+                                            <option value="880" data-select2-id="229">880</option>
+                                            <option value="888" data-select2-id="230">888</option>
+                                            <option value="889" data-select2-id="231">889</option>
+                                            <option value="890" data-select2-id="232">890</option>
+                                            <option value="899" data-select2-id="233">899</option>
+                                            <option value="900" data-select2-id="234">900</option>
+                                            <option value="990" data-select2-id="235">990</option>
+                                            <option value="999" data-select2-id="236">999</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mt-2">
+                                        <label for="result_digit" class="form-label">Digit</label>
+                                        <input id="result_digit" name="result_digit" class="form-control"
+                                               type="text"
+                                               placeholder="" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <button type="button" class="btn btn-success"
+                                            style="margin-left: 10px;margin-top: 36px;">Save
+                                    </button>
+                                    <button type="button" id="showWinnerBtn" class="btn btn-warning"
+                                            style="margin-left: 10px;margin-top: 36px;">Show Winner
+                                    </button>
+
+                                    <button type="button" class="btn btn-primary" onclick="declareResult()"
+                                            style="margin-left: 10px;margin-top: 36px;">Declare
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+                <span id="alertMessage"></span>
+            </div>
+
+            <div class="row">
+                <span id="winners" style="width: -webkit-fill-available;"></span>
+            </div>
+
+            <div class="row">
+                <span id="history"></span>
+            </div>
+
+        </div>
+    </div>
+
+                </div>
+                <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+            <footer class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <script>document.write(new Date().getFullYear())</script> © Admin Panel.
+            </div>
+        </div>
+    </div>
+</footer>        </div>
+        <!-- end main content-->
+    </div>
+    <!-- END layout-wrapper -->
+
+    <!-- Right Sidebar -->
+    <!-- Right Sidebar -->
+<div class="right-bar">
+    <div data-simplebar class="h-100">
+        <div class="rightbar-title d-flex align-items-center px-3 py-4">
+            
+            <h5 class="m-0 me-2">Settings</h5>
+
+            <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
+                <i class="mdi mdi-close noti-icon"></i>
+            </a>
+        </div>
+
+        <!-- Settings -->
+        <hr class="mt-0" />
+        <h6 class="text-center mb-0">Choose Layouts</h6>
+
+        <div class="p-4">
+            <div class="mb-2">
+                <img src="https://blacksatta73.github.io/site/assets/images/layouts/layout-1.jpg" class="img-fluid img-thumbnail" alt="">
+            </div>
+
+            <div class="form-check form-switch mb-3">
+                <input class="form-check-input theme-choice" type="checkbox" id="light-mode-switch" checked>
+                <label class="form-check-label" for="light-mode-switch">Light Mode</label>
+            </div>
+    
+            <div class="mb-2">
+                <img src="https://blacksatta73.github.io/site/assets/images/layouts/layout-2.jpg" class="img-fluid img-thumbnail" alt="">
+            </div>
+            <div class="form-check form-switch mb-3">
+                <input class="form-check-input theme-choice" type="checkbox" id="dark-mode-switch" data-bsStyle="https://blacksatta73.github.io/site/assets/css/bootstrap-dark.min.css" data-appStyle="https://blacksatta73.github.io/site/assets/css/app-dark.min.css">
+                <label class="form-check-label" for="dark-mode-switch">Dark Mode</label>
+            </div>
+    
+            <div class="mb-2">
+                <img src="https://blacksatta73.github.io/site/assets/images/layouts/layout-3.jpg" class="img-fluid img-thumbnail" alt="">
+            </div>
+            <div class="form-check form-switch mb-5">
+                <input class="form-check-input theme-choice" type="checkbox" id="rtl-mode-switch" data-appStyle="https://blacksatta73.github.io/site/assets/css/app-rtl.min.css">
+                <label class="form-check-label" for="rtl-mode-switch">RTL Mode</label>
+            </div>
+
+            <div class="mb-2">
+                <img src="https://blacksatta73.github.io/site/assets/images/layouts/layout-4.jpg" class="img-thumbnail" alt="layout images">
+            </div>
+            <div class="form-check form-switch mb-5">
+                <input class="form-check-input theme-choice" type="checkbox" id="dark-rtl-mode-switch">
+                <label class="form-check-label" for="dark-rtl-mode-switch">Dark RTL Mode</label>
+            </div>
+            
+        </div>
+
+    </div> <!-- end slimscroll-menu-->
+</div>
+<!-- /Right-bar -->
+
+<!-- Right bar overlay-->
+<div class="rightbar-overlay"></div>    <!-- /Right-bar -->
+
+    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT -->
+<script src="https://blacksatta73.github.io/site/assets/libs/jquery/jquery.min.js"></script>
+<script src="https://blacksatta73.github.io/site/assets/libs/bootstrap/bootstrap.min.js"></script>
+<script src="https://blacksatta73.github.io/site/assets/libs/metismenu/metismenu.min.js"></script>
+<script src="https://blacksatta73.github.io/site/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="https://blacksatta73.github.io/site/assets/libs/node-waves/node-waves.min.js"></script>
+<script>
+    document.getElementById("change-password").addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const newPassword = formData.get("password");
+
+            try {
+                const response = await fetch("https://blacksatta.onrender.com/change", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                if (response.ok) {
+                    window.location.href = "https://blacksatta73.github.io/site/dashboard";
+                    console.log("Password Changed");
+                } else {
+                    console.error("Failed");
+                }
+            } catch (error) {
+                console.error("Error :", error);
+            }
+    });
+</script>
+
+    <script src="https://blacksatta73.github.io/site/assets/libs/datatables/datatables.min.js"></script>
+    <script src="https://blacksatta73.github.io/site/assets/js/pages/datatables.init.js"></script>
+    <script src="https://blacksatta73.github.io/site/assets/js/custom.js"></script>
+    <script src="https://blacksatta73.github.io/site/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="https://blacksatta73.github.io/site/assets/js/pages/dashboard.init.js"></script>
+    <script src="https://blacksatta73.github.io/site/assets/libs/select2/select2.min.js"></script>
+
+    <script>
+
+
+        function declareResult() {
+            const game_name = document.getElementById('game').value;
+            const session = document.getElementById('session').value;
+            const panel = document.getElementById('result_panel').value;
+            const single = document.getElementById('result_digit').value;
+
+            $.ajax({
+                type: 'post',
+                url: '/api/markets/declare_main_result',
+                data: {game_name: game_name, session: session, panel: panel, single: single},
+                success: function (response) {
+                    $('#alertMessage').html(response)
+                    document.getElementById("result_form").style.display = "none";
+                    getResultHistory()
+                }
+            })
+
+        }
+
+        function getResultHistory() {
+            $.ajax({
+                type: 'get',
+                url: '/api/markets/main_result_history',
+                success: function (response) {
+                    $('#history').html(response)
+                }
+            })
+        }
+
+        function showResultForm() {
+            document.getElementById("result_form").style.display = "block";
+        }
+
+
+        $(document).ready(function () {
+            getResultHistory()
+            $("#showWinnerBtn").click(function () {
+                const game_name = document.getElementById('game').value;
+                const session = document.getElementById('session').value;
+                const panel = document.getElementById('result_panel').value;
+                const single = document.getElementById('result_digit').value;
+                $.ajax({
+                    type: 'post',
+                    url: '/api/bids/winner_list',
+                    data: {game_name: game_name, session: session, panel: panel, single: single},
+                    success: function (response) {
+                        $('#winners').html(response)
+                    }
+                })
+            });
+        });
+    </script>
+
+<!-- App js -->
+<script src="https://blacksatta73.github.io/site/assets/js/app.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/js/toastr.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
+            integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function () {
+            toastr.options.timeOut = 10000;
+                    });
+
+    </script>
+    </body>
+
+</html>
