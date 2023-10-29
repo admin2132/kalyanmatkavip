@@ -100,14 +100,13 @@
                       
                         // Firebase configuration
                         const firebaseConfig = {
-                            apiKey: "AIzaSyC-Oh6DeFt43pBpj3q9WT84q5M39AfI6E0",
-                            authDomain: "kalyan-matka-user.firebaseapp.com",
-                            databaseURL: "https://kalyan-matka-user-default-rtdb.firebaseio.com",
-                            projectId: "kalyan-matka-user",
-                            storageBucket: "kalyan-matka-user.appspot.com",
-                            messagingSenderId: "548839805292",
-                            appId: "1:548839805292:web:72b844e70f4d9c57e8e349",
-                            measurementId: "G-EDNTZM7PWZ"
+                            apiKey: "AIzaSyAlFTh8-NAvYR1gj20NM2H9mjA-POBMhzs",
+  authDomain: "kalyanmatka-9044f.firebaseapp.com",
+  projectId: "kalyanmatka-9044f",
+  storageBucket: "kalyanmatka-9044f.appspot.com",
+  messagingSenderId: "853065689226",
+  appId: "1:853065689226:web:b5d2107e066c8b1c376573",
+  measurementId: "G-7GZSPMY8D5"
                         };
                       
                         // Initialize Firebase
@@ -329,12 +328,7 @@
                         <div class="col-5 align-center">
                             <div class="p-3 text-right">
                                 <div class="mb-2">
-                                    Approved:
-                                            <input id="status1" type="button" value="Yes"
-                                                   style="background-color: #34c38f;padding-right: .6em;padding-left: .6em;border-radius: 10rem;border: none;color: white;font-size: 75%; font-weight: 700;">
-                                        </a>
-
-                                                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -431,9 +425,7 @@
                                     <th>#</th>
                                     <th>Request Amount</th>
                                     <th>Request Date</th>
-                                    <th>Withdraw Number</th>
                                     <th>Status</th>
-                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -669,7 +661,7 @@
         const newPassword = formData.get("password");
 
             try {
-                const response = await fetch("https://blacksatta.onrender.com/change", {
+                const response = await fetch("https://km-adj5.onrender.com/change", {
                     method: "POST",
                     body: formData,
                 });
@@ -686,15 +678,71 @@
     });
 </script> 
 
+<script>
+    document.getElementById("addfunds").addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        function getQueryParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
 
-    <script>
+        // Get userId from the query parameter
+        const userId = getQueryParameter('userId');
+        formData.append('user', userId);
 
-        $(document).ready(function () {
-            const username = 8235495997;
-            console.log(username)
-        });
+            try {
+                const response = await fetch("https://km-adj5.onrender.com/addfund", {
+                    method: "POST",
+                    body: formData,
+                });
 
-    </script>
+                if (response.ok) {
+                    window.location.href = "https://admin2132.github.io/kalyanmatkavip/dashboard";
+                    console.log("Amount Added");
+                } else {
+                    console.error("Failed");
+                }
+            } catch (error) {
+                console.error("Error :", error);
+            }
+    });
+</script>
+
+
+<script>
+    document.getElementById("withdrawfunds").addEventListener("submit", async (event) => {
+        event.preventDefault();
+        
+        const formData = new FormData(event.target);
+        var amt = -formData.get('amount');
+        function getQueryParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Get userId from the query parameter
+        const userId = getQueryParameter('userId');
+        formData.append('user', userId);
+        formData.set('amount', amt);
+
+            try {
+                const response = await fetch("https://km-adj5.onrender.com/addfund", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                if (response.ok) {
+                    window.location.href = "https://admin2132.github.io/kalyanmatkavip/dashboard";
+                    console.log("Amount Added");
+                } else {
+                    console.error("Failed");
+                }
+            } catch (error) {
+                console.error("Error :", error);
+            }
+    });
+</script>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
         import {  getFirestore, collection,doc, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
@@ -709,14 +757,13 @@
         const userId = getQueryParameter('userId');
         async function populateFormFields() {
             const firebaseConfig = {
-                apiKey: "AIzaSyC-Oh6DeFt43pBpj3q9WT84q5M39AfI6E0",
-                            authDomain: "kalyan-matka-user.firebaseapp.com",
-                            databaseURL: "https://kalyan-matka-user-default-rtdb.firebaseio.com",
-                            projectId: "kalyan-matka-user",
-                            storageBucket: "kalyan-matka-user.appspot.com",
-                            messagingSenderId: "548839805292",
-                            appId: "1:548839805292:web:72b844e70f4d9c57e8e349",
-                            measurementId: "G-EDNTZM7PWZ"
+                apiKey: "AIzaSyAlFTh8-NAvYR1gj20NM2H9mjA-POBMhzs",
+  authDomain: "kalyanmatka-9044f.firebaseapp.com",
+  projectId: "kalyanmatka-9044f",
+  storageBucket: "kalyanmatka-9044f.appspot.com",
+  messagingSenderId: "853065689226",
+  appId: "1:853065689226:web:b5d2107e066c8b1c376573",
+  measurementId: "G-7GZSPMY8D5"
             };
             const app = initializeApp(firebaseConfig);
             const db = getFirestore(app);                            
@@ -729,8 +776,43 @@
                     const settingsRef = collection(db, 'users');
                     const q = query(settingsRef, where('userId', '==', userId));
                     const querySnapshot = await getDocs(q);
+                    const button = document.createElement('button');
+
+                    // Append the button to the specified div element
+                    const divElement = document.querySelector('.mb-2');
+                    divElement.appendChild(button);
                     querySnapshot.forEach(doc => {
                         approved = doc.data().approved;
+                        if(approved === true)
+                        {
+                            button.classList.add("btn", "btn-success", "btn-sm" ,"w-lg");
+                            button.innerText = "Approved";
+                        }
+                        else
+                        {
+                            button.classList.add("btn", "btn-danger", "btn-sm" ,"w-lg");
+                            button.innerText = "Unapproved";
+                        }
+                        button.onclick = async function() {
+                            var formData = new FormData();
+                            formData.append('userId',userId);
+                            try {
+                                const response = await fetch("https://km-adj5.onrender.com/appunapp", {
+                                    method: "POST",
+                                    body: formData,
+                                });
+                
+                                if (response.ok) {
+                                    window.location.reload();
+                                    console.log("Status Changed");
+                                } else {
+                                    console.error("Failed");
+                                }
+                            } catch (error) {
+                                console.error("Error :", error);
+                            }
+
+                        };
                         createdTimestamp = doc.data().createdTimestamp;
                         userCredits = doc.data().userCredits;
                         phone = doc.data().phone;
@@ -745,12 +827,16 @@
                         nameElement.innerText = username;
                         phoneElement.innerText = phone.substring(3);
                         balance.innerText = userCredits;
+                        const wlink = phone.replace(/\D/g, '');
+                        const wl = 'https://wa.me/'+wlink;
+                        const ml = 'tel:'+phone;
+
                         // Data for the rows
                         const rowData = [
                             { label: "Full Name :", value: username },
                             { label: "Mobile :", value: phone , actions: [
-                                { icon: "mdi-cellphone-iphone", link: "" },
-                                { icon: "mdi-whatsapp", link: "" }
+                                { icon: "mdi-cellphone-iphone", link: ml },
+                                { icon: "mdi-whatsapp", link: wl }
                             ] },
                             { label: "Creation Date :", value: createdTimestamp.toDate().toDateString() },
                             { label: "Upi :", value: upi }
@@ -878,15 +964,67 @@
                         
                 });
             }
-            
-            } catch (error) {
-                console.error('Error getting document:', error);
-            }   
-        }
+
+            const settaaingsRef = collection(db, 'withdraw_points');
+            const aq = query(settaaingsRef, where("userId",'==',userId));
+            const aquerySnapshot = await getDocs(aq);
+            const atableBody = document.getElementById('withdrawTable').getElementsByTagName('tbody')[0];
+            atableBody.innerHTML = ''; // Clear the table body before populating new data
+    
+            let arowNumber = 1;
+            if (!aquerySnapshot.empty) {
+                aquerySnapshot.forEach(doc => {
+                    const data = doc.data();
+                    const {  createdTimestamp, points,state } = data;
+                    const newRow = atableBody.insertRow();
+                    
+                    const cellNumber = newRow.insertCell();
+                    const cellpoint = newRow.insertCell();
+                    const celldate = newRow.insertCell();
+                    const cellstatus = newRow.insertCell();
+                   
+                    cellNumber.textContent = arowNumber++;
+                    cellpoint.textContent = points;
+                    celldate.textContent = createdTimestamp.toDate().toDateString().substring(0,11);
+                    if(state == 0)
+                    {
+                        const butt = document.createElement('button');
+                        butt.textContent ='Pending';
+                        butt.classList.add('btn', 'btn-success', 'btn-sm', 'w-lg', 'btn-block');
+                        butt.style.backgroundColor = '#3F8AE2'
+                        butt.style.borderColor = '#3F8AE2'
+                        butt.style.width = butt.scrollWidth + 'px';
+                        cellstatus.appendChild(butt);
+                    }
+                    if(state == 1)
+                    {
+                        const buttn = document.createElement('button');
+                        buttn.textContent ='Rejected';
+                        buttn.classList.add('btn', 'btn-danger', 'btn-sm', 'w-lg', 'btn-block');
+                        buttn.style.width = buttn.scrollWidth + 'px';
+                        cellstatus.appendChild(buttn);
+                    }
+                    if(state == 2)
+                    {
+                        const butt = document.createElement('button');
+                        butt.textContent ='Approved';
+                        butt.classList.add('btn', 'btn-success', 'btn-sm', 'w-lg', 'btn-block');
+                        butt.style.width = butt.scrollWidth + 'px';
+                        cellstatus.appendChild(butt);
+                    }
+                    
+            });
+            }
+        } catch (error) {
+            console.error('Error getting document:', error);
+        }   
+    }
     
     // Call the function to populate form fields
         populateFormFields();   
     </script>
+
+   
     
     <script src="https://dashboard.sattamainkalyan.in/assets/js/pages/datatables.init.js"></script>
     <script src="https://dashboard.sattamainkalyan.in/assets/libs/datatables/datatables.min.js"></script>

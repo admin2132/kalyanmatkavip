@@ -105,14 +105,13 @@
                       
                         // Firebase configuration
                         const firebaseConfig = {
-                            apiKey: "AIzaSyC-Oh6DeFt43pBpj3q9WT84q5M39AfI6E0",
-                            authDomain: "kalyan-matka-user.firebaseapp.com",
-                            databaseURL: "https://kalyan-matka-user-default-rtdb.firebaseio.com",
-                            projectId: "kalyan-matka-user",
-                            storageBucket: "kalyan-matka-user.appspot.com",
-                            messagingSenderId: "548839805292",
-                            appId: "1:548839805292:web:72b844e70f4d9c57e8e349",
-                            measurementId: "G-EDNTZM7PWZ"
+                            apiKey: "AIzaSyAlFTh8-NAvYR1gj20NM2H9mjA-POBMhzs",
+  authDomain: "kalyanmatka-9044f.firebaseapp.com",
+  projectId: "kalyanmatka-9044f",
+  storageBucket: "kalyanmatka-9044f.appspot.com",
+  messagingSenderId: "853065689226",
+  appId: "1:853065689226:web:b5d2107e066c8b1c376573",
+  measurementId: "G-7GZSPMY8D5"
                         };
                       
                         // Initialize Firebase
@@ -306,43 +305,19 @@
                         <div class="col-12 col-sm-12 col-lg-12">
 
         <div class="row">
-
+            <div class="card">
             <div class="col-sm-12 col-12 ">
-                <form method="post" action="starline/declare_result">
-                    <input type="hidden" name="_token" value="7vWK6oBK61IBRCLYr147qH5uw5HuHHuXxFZbOdyh">                    <div class="card">
-
-                        <div class="card-header">
-
-                            <h5>Starline Declare Result</h5>
-
-                        </div>
+                
+                    
 
                         <div class="card-body">
-
+                            <h5>Starline Declare Result</h5>
                             <div class="row">
-
-                                <div class="form-group col-md-4" style="margin-top:auto;">
-
-                                    <label>Result Date</label>
-
-                                    <div class="date-picker">
-
-                                        <div class="input-group">
-
-                                            <input class="form-control digits" type="date" data-date-format="yyyy-mm-dd"
-                                                   data-language="en" name="date" id="date"
-                                                   placeholder="Enter Start Date" required
-                                                   data-original-title="" title="">
-                                        </div>
-
-                                    </div>
-
-                                </div>
 
                                 <div class="form-group col-md-4">
                                     <label class="col-form-label">Game Name</label>
                                     <select id="starline_game" name="starline_game" class="form-control" required>
-                                                                                    
+                                                                                    <option>Select Game</option>
                                                                             </select>
                                 </div>
 
@@ -358,7 +333,7 @@
                         </div>
 
                     </div>
-
+                </div>
                     <div class="card display_none" id="starline_result_form_card">
                         <div class="card-body">
                             <div class="row">
@@ -603,23 +578,22 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
-                                    <button type="button" class="btn btn-success"
-                                            style="margin-left: 10px;margin-top: 36px;">Save
-                                    </button>
+                            
                                     <button type="button" id="showWinnerBtn" name="showWinnerBtn"
                                             class="btn btn-warning"
                                             style="margin-left: 10px;margin-top: 36px;">Show Winner
                                     </button>
 
-                                    <button type="submit" class="btn btn-primary"
-                                            style="margin-left: 10px;margin-top: 36px;">Declare
+                                    <button type="submit" id="decbtn" name="decbtn"
+                                            class="btn btn-primary"
+                                            style="margin-left: 10px;margin-top: 36px;">Save
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                </form>
+                
 
             </div>
 
@@ -627,156 +601,57 @@
         </div>
 
     </div>
+    <script>
+        function showStarlineResultForm() {
+            document.getElementById("starline_result_form_card").style.display = "block";
+        }
+    </script>
 
-    <div class="row">
-        <span id="winners" style="width: -webkit-fill-available;"></span>
+    <div class="card">
+
+        <div class="card-header p-t-15 p-b-15">
+
+        </div>
+
+        <div class="card-body">
+            <h5>Win User List </h5>
+            <div class="table-responsive">
+                <table id="bidHistory" class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Username</th>
+                        <th>Game Type</th>
+                        <th>Bet Digit</th>
+                        <th>Win Points</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
 
     <div class="col-12">
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Game Result History</h4>
+                <div class="card"></div>
                 <div class="">
-                    <table id="main_game_result_history" class="table table-striped table-bordered">
+                    <table id="resulthistory" class="table table-bordered">
                         <thead>
                         <tr>
                             <th>#</th>
                             <th>Game Name</th>
                             <th>Result</th>
+                            <th>Confirm</th>
                         </tr>
                         </thead>
-                        <tbody>
-                                                    <tr>
-                                <td>1</td>
-                                <td>10:00 AM</td>
-                                <td>
-                                    ***-
-                                    *
-
-
-                                                                    </td>
-                            </tr>
-                                                    <tr>
-                                <td>2</td>
-                                <td>11:00 AM</td>
-                                <td>
-                                    ***-
-                                    5
-
-
-                                                                    </td>
-                            </tr>
-                                                    <tr>
-                                <td>3</td>
-                                <td>12:00 PM</td>
-                                <td>
-                                    ***-
-                                    7
-
-
-                                                                    </td>
-                            </tr>
-                                                    <tr>
-                                <td>4</td>
-                                <td>01:00 PM</td>
-                                <td>
-                                    ***-
-                                    4
-
-
-                                                                    </td>
-                            </tr>
-                                                    <tr>
-                                <td>5</td>
-                                <td>02:00 PM</td>
-                                <td>
-                                    ***-
-                                    7
-
-
-                                                                    </td>
-                            </tr>
-                                                    <tr>
-                                <td>6</td>
-                                <td>03:00 PM</td>
-                                <td>
-                                    ***-
-                                    7
-
-
-                                                                    </td>
-                            </tr>
-                                                    <tr>
-                                <td>7</td>
-                                <td>04:00 PM</td>
-                                <td>
-                                    ***-
-                                    4
-
-
-                                                                    </td>
-                            </tr>
-                                                    <tr>
-                                <td>8</td>
-                                <td>05:00 PM</td>
-                                <td>
-                                    ***-
-                                    2
-
-
-                                                                    </td>
-                            </tr>
-                                                    <tr>
-                                <td>9</td>
-                                <td>06:00 PM</td>
-                                <td>
-                                    ***-
-                                    0
-
-
-                                                                    </td>
-                            </tr>
-                                                    <tr>
-                                <td>10</td>
-                                <td>07:00 PM</td>
-                                <td>
-                                    ***-
-                                    5
-
-
-                                                                    </td>
-                            </tr>
-                                                    <tr>
-                                <td>11</td>
-                                <td>08:00 PM</td>
-                                <td>
-                                    ***-
-                                    1
-
-
-                                                                    </td>
-                            </tr>
-                                                    <tr>
-                                <td>12</td>
-                                <td>09:00 PM</td>
-                                <td>
-                                    ***-
-                                    3
-
-
-                                                                    </td>
-                            </tr>
-                                                    <tr>
-                                <td>13</td>
-                                <td>10:00 PM</td>
-                                <td>
-                                    ***-
-                                    9
-
-
-                                                                    </td>
-                            </tr>
-                                                </tbody>
+                        <tbody>                            
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -784,11 +659,32 @@
     </div>
 
 
-    <script>
-        function showStarlineResultForm() {
-            document.getElementById("starline_result_form_card").style.display = "block";
-        }
-    </script>
+    
+    <div class="modal fade" id="addFundsModal" aria-labelledby="addFundsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addFundsModalLabel">Edit Bid</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id='addfunds'>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Bid </label>
+                            <input type="number" class="form-control" name="bid" id="bid"
+                                   placeholder="Enter Bid">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
                 </div>
                 <!-- container-fluid -->
@@ -881,7 +777,7 @@
         const newPassword = formData.get("password");
 
             try {
-                const response = await fetch("https://blacksatta.onrender.com/change", {
+                const response = await fetch("https://km-adj5.onrender.com/change", {
                     method: "POST",
                     body: formData,
                 });
@@ -898,38 +794,169 @@
     });
 </script>
 
-    <script>
-        $(document).ready(function () {
-            $("#showWinnerBtn").click(function () {
-                const game_name = document.getElementById('starline_game').value;
-                const panel = document.getElementById('starline_result_panel').value;
-                const single = document.getElementById('result_digit').value;
-                $.ajax({
-                    type: 'post',
-                    url: '/api/bids/starline_winner_list',
-                    data: {game_name: game_name, panel: panel, single: single},
-                    success: function (response) {
-                        $('#winners').html(response)
-                    }
-                })
-            });
-        });
-    </script>
 
     <script src="https://admin2132.github.io/kalyanmatkavip/assets/js/custom.js"></script>
     <script src="https://admin2132.github.io/kalyanmatkavip/assets/js/pages/datatables.init.js"></script>
     <script src="https://admin2132.github.io/kalyanmatkavip/assets/libs/datatables/datatables.min.js"></script>
     <script src="https://admin2132.github.io/kalyanmatkavip/assets/js/pages/dashboard.init.js"></script>
     <script src="https://admin2132.github.io/kalyanmatkavip/assets/libs/select2/select2.min.js"></script>
-    <script>
-        $.ajax({
-            type: 'get',
-            url: '/api/date',
-            success: function (response) {
-                document.getElementById('date').value = response;
-            }
-        })
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+        import {  getFirestore, collection,doc, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
+    
+        // 
+    // Function to fetch data from Firestore and populate the form fields
+        async function populateFormFields() {
+            const firebaseConfig = {
+                apiKey: "AIzaSyAlFTh8-NAvYR1gj20NM2H9mjA-POBMhzs",
+  authDomain: "kalyanmatka-9044f.firebaseapp.com",
+  projectId: "kalyanmatka-9044f",
+  storageBucket: "kalyanmatka-9044f.appspot.com",
+  messagingSenderId: "853065689226",
+  appId: "1:853065689226:web:b5d2107e066c8b1c376573",
+  measurementId: "G-7GZSPMY8D5"
+            };
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);                            
+    
+            const gameNameSelect = document.getElementById("starline_game");
+    
+            try {
+                    const settingsRef = collection(db, 'game_names_sg');
+                    const q = query(settingsRef, where('exists', '==', true));
+                    const querySnapshot = await getDocs(q);
+                    if (!querySnapshot.empty) {
+                        querySnapshot.forEach(doc => {
+                            const gameName = doc.data().gameName;
+                            const option = document.createElement('option');
+                            option.value = gameName;
+                            option.textContent = gameName;
+                            gameNameSelect.appendChild(option);
+                            
+                        });
+                    }
+            } catch (error) {
+                console.error('Error getting document:', error);
+            }   
+        }
+    
+    // Call the function to populate form fields
+        populateFormFields();   
+    
     </script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+        import {  getFirestore, collection,doc, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
+    
+        // 
+    // Function to fetch data from Firestore and populate the form fields
+        async function populateFormFields() {
+            const firebaseConfig = {
+                apiKey: "AIzaSyAlFTh8-NAvYR1gj20NM2H9mjA-POBMhzs",
+  authDomain: "kalyanmatka-9044f.firebaseapp.com",
+  projectId: "kalyanmatka-9044f",
+  storageBucket: "kalyanmatka-9044f.appspot.com",
+  messagingSenderId: "853065689226",
+  appId: "1:853065689226:web:b5d2107e066c8b1c376573",
+  measurementId: "G-7GZSPMY8D5"
+            };
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);                            
+    
+            const tableBody = document.getElementById('resulthistory').getElementsByTagName('tbody')[0];
+            tableBody.innerHTML = ''; // Clear the table body before populating new data
+    
+            let rowNumber = 1;
+    
+            try {
+                    const settingsRef = collection(db, 'game_names_sg');
+                    const q = query(settingsRef, where('exists', '==', true));
+                    const querySnapshot = await getDocs(q);
+                    if (!querySnapshot.empty) {
+                        querySnapshot.forEach(doc => {
+                            const gameName = doc.data().gameName;
+                            const gameNumber = doc.data().gameNumber;
+                            const newRow = tableBody.insertRow();
+                                
+                            const cellNumber = newRow.insertCell();
+                            const cellgamename = newRow.insertCell();
+                            const cellfirst = newRow.insertCell();
+                            const cellAction = newRow.insertCell();
+    
+                            cellNumber.textContent = rowNumber++;
+                            cellgamename.textContent = gameName;
+                            cellfirst.textContent = gameNumber;
+                            const buttons = document.createElement('button');
+                            buttons.textContent ='Reset'
+                            buttons.classList.add("btn", "btn-danger", "btn-xs", "mr-1");
+                            buttons.addEventListener("click", async () => {
+                                
+                                const numm = '***-*'; 
+    
+                                const formData = new FormData();
+                                formData.append('gameName', gameName);
+                                formData.append('gameNumber',numm)
+                                try {
+                                    // Send the value to the server using fetch API                    
+                                    const response = await fetch('https://km-adj5.onrender.com/sav', {
+                                        method: 'POST',
+                                        body: formData,
+                                    });
+                                    // Check if the request was successful
+                                    if (response.ok) {
+                                        // Reload the page after sending the value to the server
+                                        window.location.reload();
+                                    } else {
+                                        // Handle the error if the request was not successful
+                                        console.error('Error sending data to the server');
+                                    }
+                                } catch (error) {
+                                    // Handle any other errors that might occur
+                                    console.error('Error:', error);
+                                }
+                            });
+                            cellfirst.appendChild(buttons);
+                            
+    
+                        const button = document.createElement('button');
+                        button.textContent ='DECLARE'
+                        button.classList.add("btn", "btn-primary", "btn-xs", "mr-1");
+                        button.addEventListener("click", async () => {
+                            const formData = new FormData();
+                            formData.append('gameName', gameName);
+                            try {
+                                // Send the value to the server using fetch API                    
+                                const response = await fetch('https://km-adj5.onrender.com/decressg', {
+                                    method: 'POST',
+                                    body: formData,
+                                });
+                                // Check if the request was successful
+                                if (response.ok) {
+                                    // Reload the page after sending the value to the server
+                                    window.location.reload();
+                                } else {
+                                    // Handle the error if the request was not successful
+                                    console.error('Error sending data to the server');
+                                }
+                            } catch (error) {
+                                // Handle any other errors that might occur
+                                console.error('Error:', error);
+                            }
+                        });
+                        cellAction.appendChild(button);
+                        
+                    });
+                }
+            } catch (error) {
+                console.error('Error getting document:', error);
+            }   
+        }
+    
+    // Call the function to populate form fields
+        populateFormFields();   
+    
+    </script>
+
 
     <script>
         function showMe(i) {
@@ -945,8 +972,290 @@
         }
 
     </script>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+    import {  getFirestore, collection,doc, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
+    
+    $("#showWinnerBtn").click(async function () {
+        const firebaseConfig = {
+            apiKey: "AIzaSyAlFTh8-NAvYR1gj20NM2H9mjA-POBMhzs",
+  authDomain: "kalyanmatka-9044f.firebaseapp.com",
+  projectId: "kalyanmatka-9044f",
+  storageBucket: "kalyanmatka-9044f.appspot.com",
+  messagingSenderId: "853065689226",
+  appId: "1:853065689226:web:b5d2107e066c8b1c376573",
+  measurementId: "G-7GZSPMY8D5"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app); 
 
+        const game_name = document.getElementById('starline_game').value;
+        const panel = parseInt(document.getElementById('starline_result_panel').value);
+        const single = parseInt(document.getElementById('result_digit').value);
+        
+        try{
+            const today = new Date();
+            const day = today.getDate();
+            const month = today.getMonth() + 1; // Month is zero-based, so add 1
+            const year = today.getFullYear();
+            const date = `${year}-${month < 10 ? '0' : ''}${month}-${day < 10 ? '0' : ''}${day}`;
+            const startOfDay = new Date(date);
+            startOfDay.setHours(0, 0, 0, 0);
 
+            const tableBody = document.getElementById('bidHistory').getElementsByTagName('tbody')[0];
+            tableBody.innerHTML = ''; // Clear the table body before populating new data
+    
+            let rowNumber = 1;
+
+            const asettingsRef = doc(db, 'bid_sg',game_name);
+            const settingsRef = collection(asettingsRef ,'single_digit');
+            const q = query(settingsRef,where('timestamp', '>=', startOfDay),where('numbid', '==', single));
+            const querySnapshot = await getDocs(q);
+            if (!querySnapshot.empty) {
+                querySnapshot.forEach(doc => {
+                    const data = doc.data();
+                    const { numbid,type,gamerate, userId,uid, timestamp, amtbid,username } = data;
+                    const newRow = tableBody.insertRow();
+                    
+                    const cellNumber = newRow.insertCell();
+                    const cellusername = newRow.insertCell();
+                    const cellgame = newRow.insertCell();
+                    const celldigit = newRow.insertCell();
+                    const cellwinp = newRow.insertCell();
+                    const cellaction = newRow.insertCell();
+
+                    cellNumber.textContent = rowNumber++;
+                    cellusername.textContent = username;
+                    cellgame.textContent = type;
+                    celldigit.textContent = numbid;
+                    cellwinp.textContent = (amtbid*gamerate)/10;
+
+                    const button = document.createElement('button');
+                    button.textContent ='EDIT'
+                    button.classList.add("btn", "btn-primary", "btn-xs", "mr-1");
+                    button.addEventListener('click', function() {
+                        // Store userId in localStorage
+                        localStorage.setItem('userId', userId);
+                        localStorage.setItem('uid', uid);
+                        localStorage.setItem('type',"single_digit")
+                    
+                        // Open the modal
+                        const modal = new bootstrap.Modal(document.getElementById('addFundsModal'));
+                        modal.show();
+                    });
+                    cellaction.appendChild(button);
+                });
+            }
+
+            const aettingsRef = doc(db, 'bid_sg',game_name);
+            const ettingsRef = collection(aettingsRef ,'single_panna');
+            const eq = query(ettingsRef, where('timestamp', '>=', startOfDay),where('numbid', '==', panel));
+            const querySnapsho = await getDocs(eq);
+            if (!querySnapsho.empty) {
+                querySnapsho.forEach(doc => {
+                    const data = doc.data();
+                    const { numbid,type,gamerate, userId,uid, timestamp, amtbid,username } = data;
+                    const newRow = tableBody.insertRow();
+                    
+                    const cellNumber = newRow.insertCell();
+                    const cellusername = newRow.insertCell();
+                    const cellgame = newRow.insertCell();
+                    const celldigit = newRow.insertCell();
+                    const cellwinp = newRow.insertCell();
+                    const cellaction = newRow.insertCell();
+
+                    cellNumber.textContent = rowNumber++;
+                    cellusername.textContent = username;
+                    cellgame.textContent = type;
+                    celldigit.textContent = numbid;
+                    cellwinp.textContent = (amtbid*gamerate)/10;
+
+                    const button = document.createElement('button');
+                    button.textContent ='EDIT'
+                    button.classList.add("btn", "btn-primary", "btn-xs", "mr-1");
+                    
+                    button.addEventListener('click', function() {
+                        // Store userId in localStorage
+                        localStorage.setItem('userId', userId);
+                        localStorage.setItem('uid', uid);
+                        localStorage.setItem('type',"single_panna")
+                    
+                        // Open the modal
+                        const modal = new bootstrap.Modal(document.getElementById('addFundsModal'));
+                        modal.show();
+                    });
+                    cellaction.appendChild(button);
+                });
+            }
+
+            const aetingsRef = doc(db, 'bid_sg',game_name);
+            const etingsRef = collection(aetingsRef ,'double_panna');
+            const eqs = query(etingsRef, where('timestamp', '>=', startOfDay),where('numbid', '==', panel));
+            const quesrySnapsho = await getDocs(eqs);
+            if (!quesrySnapsho.empty) {
+                quesrySnapsho.forEach(doc => {
+                    const data = doc.data();
+                    const { numbid,type,gamerate, userId, uid,timestamp, amtbid,username } = data;
+                    const newRow = tableBody.insertRow();
+                    
+                    const cellNumber = newRow.insertCell();
+                    const cellusername = newRow.insertCell();
+                    const cellgame = newRow.insertCell();
+                    const celldigit = newRow.insertCell();
+                    const cellwinp = newRow.insertCell();
+                    const cellaction = newRow.insertCell();
+
+                    cellNumber.textContent = rowNumber++;
+                    cellusername.textContent = username;
+                    cellgame.textContent = type;
+                    celldigit.textContent = numbid;
+                    cellwinp.textContent = (amtbid*gamerate)/10;
+
+                    const button = document.createElement('button');
+                    button.textContent ='EDIT'
+                    button.classList.add("btn", "btn-primary", "btn-xs", "mr-1");
+                    
+                    button.addEventListener('click', function() {
+                        // Store userId in localStorage
+                        localStorage.setItem('userId', userId);
+                        localStorage.setItem('uid', uid);
+                        localStorage.setItem('type',"double_panna")
+                    
+                        // Open the modal
+                        const modal = new bootstrap.Modal(document.getElementById('addFundsModal'));
+                        modal.show();
+                    });
+                    cellaction.appendChild(button);
+                });
+            }
+
+            const aettingsef = doc(db, 'bid_sg',game_name);
+            const ettingsef = collection(aettingsef ,'triple_panna');
+            const eqr = query(ettingsef, where('timestamp', '>=', startOfDay),where('numbid', '==', panel));
+            const querrySnapsho = await getDocs(eqr);
+            if (!querrySnapsho.empty) {
+                querrySnapsho.forEach(doc => {
+                    const data = doc.data();
+                    const { numbid,type,gamerate, userId, uid,timestamp, amtbid,username } = data;
+                    const newRow = tableBody.insertRow();
+                    const cellNumber = newRow.insertCell();
+                    const cellusername = newRow.insertCell();
+                    const cellgame = newRow.insertCell();
+                    const celldigit = newRow.insertCell();
+                    const cellwinp = newRow.insertCell();
+                    const cellaction = newRow.insertCell();
+
+                    cellNumber.textContent = rowNumber++;
+                    cellusername.textContent = username;
+                    cellgame.textContent = type;
+                    celldigit.textContent = numbid;
+                    cellwinp.textContent = (amtbid*gamerate)/10;
+
+                    const button = document.createElement('button');
+                    button.textContent ='EDIT'
+                    button.classList.add("btn", "btn-primary", "btn-xs", "mr-1");
+                    
+                    button.addEventListener('click', function() {
+                        // Store userId in localStorage
+                        localStorage.setItem('userId', userId);
+                        localStorage.setItem('uid', uid);
+                        localStorage.setItem('type',"triple_panna")
+                    
+                        // Open the modal
+                        const modal = new bootstrap.Modal(document.getElementById('addFundsModal'));
+                        modal.show();
+                    });
+                    cellaction.appendChild(button);
+                });
+            }
+
+            
+        }catch (error) {
+                console.error('Error getting document:', error);
+            } 
+        
+    });
+
+    $("#decbtn").click(async function () {
+        const firebaseConfig = {
+            apiKey: "AIzaSyAlFTh8-NAvYR1gj20NM2H9mjA-POBMhzs",
+  authDomain: "kalyanmatka-9044f.firebaseapp.com",
+  projectId: "kalyanmatka-9044f",
+  storageBucket: "kalyanmatka-9044f.appspot.com",
+  messagingSenderId: "853065689226",
+  appId: "1:853065689226:web:b5d2107e066c8b1c376573",
+  measurementId: "G-7GZSPMY8D5"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);                   
+         
+        const game_name = document.getElementById('starline_game').value;
+        const panel = document.getElementById('starline_result_panel').value;
+        const single = document.getElementById('result_digit').value;
+
+        try {
+            const num = panel+"-"+single;
+            const formData = new FormData();
+            formData.append('gameName', game_name);
+            formData.append('gameNumber',num)
+            try {
+                // Send the value to the server using fetch API                    
+                const response = await fetch('https://km-adj5.onrender.com/sav', {
+                    method: 'POST',
+                    body: formData,
+                });
+                // Check if the request was successful
+                if (response.ok) {
+                    // Reload the page after sending the value to the server
+                    window.location.reload();
+                } else {
+                    // Handle the error if the request was not successful
+                    console.error('Error sending data to the server');
+                }
+            } catch (error) {
+                // Handle any other errors that might occur
+                console.error('Error:', error);
+            }
+        } catch (error) {
+            console.error('Error getting document:', error);
+        } 
+        
+        
+    });
+</script>
+
+<script>
+    document.getElementById("addfunds").addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const bidValue = document.getElementById('bid').value;
+        const formData = new FormData();
+        formData.append('bid',bidValue);
+        const storedUserId = localStorage.getItem('userId');
+        formData.append('userId',storedUserId);
+        const game_name = document.getElementById('starline_game').value;
+        formData.append('gameName',game_name);
+        const uid = localStorage.getItem('uid');
+        formData.append('uid',uid);
+        const storedIdt = localStorage.getItem('type');
+        formData.append('type',storedIdt);
+        try {
+            const response = await fetch("https://km-adj5.onrender.com/editbidsg", {
+                method: "POST",
+                body: formData,
+            });
+
+            if (response.ok) {
+                window.location.reload();
+                const a = await response.text(); // Read the response text (value of 'a')
+                console.log("Bid Changed");
+            } else {
+                console.error("Failed");
+            }
+        } catch (error) {
+            console.error("Error :", error);
+        }
+    });
+</script>
 
 <!-- App js -->
 <script src="https://admin2132.github.io/kalyanmatkavip/assets/js/app.min.js"></script>

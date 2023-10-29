@@ -403,13 +403,13 @@
 
     // Firebase configuration
     const firebaseConfig = {
-        apiKey: "AIzaSyBo0HFBbSciDSprZ6ATVw6D7qJoijenkBs",
-        authDomain: "black-satta-f197b.firebaseapp.com",
-        projectId: "black-satta-f197b",
-        storageBucket: "black-satta-f197b.appspot.com",
-        messagingSenderId: "310887564056",
-        appId: "1:310887564056:web:08f4e4375caa4224c9946d",
-        measurementId: "G-HWJ4VQGEDH"
+        apiKey: "AIzaSyAlFTh8-NAvYR1gj20NM2H9mjA-POBMhzs",
+  authDomain: "kalyanmatka-9044f.firebaseapp.com",
+  projectId: "kalyanmatka-9044f",
+  storageBucket: "kalyanmatka-9044f.appspot.com",
+  messagingSenderId: "853065689226",
+  appId: "1:853065689226:web:b5d2107e066c8b1c376573",
+  measurementId: "G-7GZSPMY8D5"
     };
     
     // Initialize Firebase
@@ -438,7 +438,7 @@
         const newPassword = formData.get("password");
 
             try {
-                const response = await fetch("https://blacksatta.onrender.com/change", {
+                const response = await fetch("https://km-adj5.onrender.com/change", {
                     method: "POST",
                     body: formData,
                 });
@@ -460,7 +460,7 @@
         const formData = new FormData(event.target);
 
             try {
-                const response = await fetch("https://blacksatta.onrender.com/contact", {
+                const response = await fetch("https://km-adj5.onrender.com/contact", {
                     method: "POST",
                     body: formData,
                 });
@@ -485,13 +485,13 @@
 // Function to fetch data from Firestore and populate the form fields
     async function populateFormFields() {
         const firebaseConfig = {
-            apiKey: "AIzaSyBo0HFBbSciDSprZ6ATVw6D7qJoijenkBs",
-            authDomain: "black-satta-f197b.firebaseapp.com",
-            projectId: "black-satta-f197b",
-            storageBucket: "black-satta-f197b.appspot.com",
-            messagingSenderId: "310887564056",
-            appId: "1:310887564056:web:08f4e4375caa4224c9946d",
-            measurementId: "G-HWJ4VQGEDH"
+            apiKey: "AIzaSyAlFTh8-NAvYR1gj20NM2H9mjA-POBMhzs",
+  authDomain: "kalyanmatka-9044f.firebaseapp.com",
+  projectId: "kalyanmatka-9044f",
+  storageBucket: "kalyanmatka-9044f.appspot.com",
+  messagingSenderId: "853065689226",
+  appId: "1:853065689226:web:b5d2107e066c8b1c376573",
+  measurementId: "G-7GZSPMY8D5"
         };
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);

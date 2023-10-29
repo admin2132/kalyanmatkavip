@@ -101,14 +101,13 @@
                       
                         // Firebase configuration
                         const firebaseConfig = {
-                            apiKey: "AIzaSyC-Oh6DeFt43pBpj3q9WT84q5M39AfI6E0",
-                            authDomain: "kalyan-matka-user.firebaseapp.com",
-                            databaseURL: "https://kalyan-matka-user-default-rtdb.firebaseio.com",
-                            projectId: "kalyan-matka-user",
-                            storageBucket: "kalyan-matka-user.appspot.com",
-                            messagingSenderId: "548839805292",
-                            appId: "1:548839805292:web:72b844e70f4d9c57e8e349",
-                            measurementId: "G-EDNTZM7PWZ"
+                            apiKey: "AIzaSyAlFTh8-NAvYR1gj20NM2H9mjA-POBMhzs",
+  authDomain: "kalyanmatka-9044f.firebaseapp.com",
+  projectId: "kalyanmatka-9044f",
+  storageBucket: "kalyanmatka-9044f.appspot.com",
+  messagingSenderId: "853065689226",
+  appId: "1:853065689226:web:b5d2107e066c8b1c376573",
+  measurementId: "G-7GZSPMY8D5"
                         };
                       
                         // Initialize Firebase
@@ -315,7 +314,7 @@
 
                     <div class="card-body">
                         <h5>Starline Win History Report</h5>
-                        <form class="theme-form mega-form" id="customerSellFrm" name="customerSellFrm" method="post">
+                        <form class="theme-form mega-form" id="MainBidHistoryReport" name="MainBidHistoryReport">
 
                             <div class="row">
                                 <div class="form-group col-md-2" style="margin-top:auto;">
@@ -354,23 +353,6 @@
 
                         </form>
 
-                        <script>
-                            document.getElementById('customerSellFrm').onsubmit = function () {
-                                var name = document.getElementById('starline_game').value;
-                                var date = document.getElementById('start_date').value;
-                                $.ajax({
-                                    type: 'POST',
-                                    url: '/api/starline_win_report',
-                                    data: {name: name, date: date},
-                                    success: function (htmlresponse) {
-                                        $('#win_histoy_starline').html(htmlresponse)
-                                        console.log(htmlresponse)
-                                    }
-                                });
-
-                                return false;
-                            };
-                        </script>
 
                     </div>
 
@@ -378,7 +360,35 @@
 
             </div>
         </div>
-        <span id="win_histoy_starline"></span>
+
+        <div class="card">
+
+            <div class="card-header p-t-15 p-b-15">
+
+            </div>
+
+            <div class="card-body">
+                <h5>Win History </h5>
+                <div class="table-responsive">
+                    <table id="bidHistory" class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Username</th>
+                            <th>Game Name</th>
+                            <th>Game Type</th>
+                            <th>Bet Digit</th>
+                            <th>Win Points</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
     </div>
                 </div>
                 <!-- container-fluid -->
@@ -471,7 +481,7 @@
         const newPassword = formData.get("password");
 
             try {
-                const response = await fetch("https://blacksatta.onrender.com/change", {
+                const response = await fetch("https://km-adj5.onrender.com/change", {
                     method: "POST",
                     body: formData,
                 });
@@ -493,6 +503,145 @@
     <script src="https://admin2132.github.io/kalyanmatkavip/assets/libs/datatables/datatables.min.js"></script>
     <script src="https://admin2132.github.io/kalyanmatkavip/assets/js/pages/dashboard.init.js"></script>
     <script src="https://admin2132.github.io/kalyanmatkavip/assets/libs/select2/select2.min.js"></script>
+
+    <script type="module">
+        
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+        import {  getFirestore, collection,doc, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
+    
+        
+        document.getElementById('MainBidHistoryReport').onsubmit = function () {
+            event.preventDefault();
+            
+    // Function to fetch data from Firestore and populate the form fields
+        async function populateFormFields() {
+            const firebaseConfig = {
+                apiKey: "AIzaSyAlFTh8-NAvYR1gj20NM2H9mjA-POBMhzs",
+  authDomain: "kalyanmatka-9044f.firebaseapp.com",
+  projectId: "kalyanmatka-9044f",
+  storageBucket: "kalyanmatka-9044f.appspot.com",
+  messagingSenderId: "853065689226",
+  appId: "1:853065689226:web:b5d2107e066c8b1c376573",
+  measurementId: "G-7GZSPMY8D5"
+            };
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);                            
+
+            
+
+            try {
+                
+                    var name = document.getElementById('starline_game').value;
+                    var date = document.getElementById('start_date').value;
+                    // Create a Date object for the specific date
+                     // Replace '2023-10-19' with your specific date in the format 'YYYY-MM-DD'
+
+                    // Create a Date object for 00:00 AM (midnight) of the specific date
+                    const startOfDay = new Date(date);
+                    startOfDay.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0
+
+                    // Create a Date object for 23:59 PM of the specific date
+                    const endOfDay = new Date(date);
+                    endOfDay.setHours(23, 59, 59, 999); // Set hours, minutes, seconds, and milliseconds to end of the day
+
+                    // Get timestamps for start of the day (00:00 AM) and end of the day (23:59 PM)
+                    //const startTimestamp = startOfDay.getTime();
+                    //const endTimestamp = endOfDay.getTime();
+
+                    const settingsRef = collection(db, 'win_history_sg_admin');
+                    const q = query(settingsRef, where('game_name', '==', name),where('timestamp', '>=', startOfDay), where('timestamp', '<=', endOfDay));
+                    const querySnapshot = await getDocs(q);
+                    const tableBody = document.getElementById('bidHistory').getElementsByTagName('tbody')[0];
+                    tableBody.innerHTML = ''; // Clear the table body before populating new data
+            
+                    let rowNumber = 1;
+                    if (querySnapshot.empty) {
+                        console.log('No matching documents.');
+                        return;
+                    }  
+
+                    querySnapshot.forEach(doc => {
+                        const data = doc.data();
+                        const { timestamp, points,number , type,username } = data;
+                        const newRow = tableBody.insertRow();
+                        
+                        const cellNumber = newRow.insertCell();
+                        const celldate = newRow.insertCell();
+                        const cellusername = newRow.insertCell();
+                        const cellgame = newRow.insertCell();
+                        const celltype = newRow.insertCell();
+                        const celldigit = newRow.insertCell();
+                        const cellpoint = newRow.insertCell();
+                        
+                        cellNumber.textContent = rowNumber++;
+                        celldate.textContent = timestamp.toDate().toDateString().substring(0,11);
+                        cellusername.textContent = username;
+                        cellgame.textContent = name;
+                        celltype.textContent = type;
+                        celldigit.textContent = number;
+                        cellpoint.textContent = points;
+                        
+                });
+            } catch (error) {
+                console.error('Error getting document:', error);
+            }   
+        }
+    
+    // Call the function to populate form fields
+        populateFormFields();   
+        }
+    </script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+        import {  getFirestore, collection,doc, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
+    
+        // 
+    // Function to fetch data from Firestore and populate the form fields
+        async function populateFormFields() {
+            const firebaseConfig = {
+                apiKey: "AIzaSyAlFTh8-NAvYR1gj20NM2H9mjA-POBMhzs",
+  authDomain: "kalyanmatka-9044f.firebaseapp.com",
+  projectId: "kalyanmatka-9044f",
+  storageBucket: "kalyanmatka-9044f.appspot.com",
+  messagingSenderId: "853065689226",
+  appId: "1:853065689226:web:b5d2107e066c8b1c376573",
+  measurementId: "G-7GZSPMY8D5"
+            };
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);                            
+    
+            const gameNameSelect = document.getElementById("starline_game");
+
+            try {
+                    const settingsRef = collection(db, 'game_names_sg');
+                    const q = query(settingsRef, where('exists', '==', true));
+                    const querySnapshot = await getDocs(q);
+
+                    
+    
+                    if (querySnapshot.empty) {
+                        console.log('No matching documents.');
+                        return;
+                    }  
+                    querySnapshot.forEach(doc => {
+                        const gameName = doc.data().gameName;
+                        const option = document.createElement('option');
+                        option.value = gameName;
+                        option.textContent = gameName;
+                        gameNameSelect.appendChild(option);
+                        
+                });
+            } catch (error) {
+                console.error('Error getting document:', error);
+            }   
+        }
+    
+    // Call the function to populate form fields
+        populateFormFields();   
+    
+    </script>
+
     <script>
         $(document).ready(function () {
             $.ajax({

@@ -104,14 +104,13 @@
                       
                         // Firebase configuration
                         const firebaseConfig = {
-                            apiKey: "AIzaSyC-Oh6DeFt43pBpj3q9WT84q5M39AfI6E0",
-                            authDomain: "kalyan-matka-user.firebaseapp.com",
-                            databaseURL: "https://kalyan-matka-user-default-rtdb.firebaseio.com",
-                            projectId: "kalyan-matka-user",
-                            storageBucket: "kalyan-matka-user.appspot.com",
-                            messagingSenderId: "548839805292",
-                            appId: "1:548839805292:web:72b844e70f4d9c57e8e349",
-                            measurementId: "G-EDNTZM7PWZ"
+                            apiKey: "AIzaSyAlFTh8-NAvYR1gj20NM2H9mjA-POBMhzs",
+    authDomain: "kalyanmatka-9044f.firebaseapp.com",
+    projectId: "kalyanmatka-9044f",
+    storageBucket: "kalyanmatka-9044f.appspot.com",
+    messagingSenderId: "853065689226",
+    appId: "1:853065689226:web:b5d2107e066c8b1c376573",
+    measurementId: "G-7GZSPMY8D5"
                         };
                       
                         // Initialize Firebase
@@ -332,17 +331,7 @@
                         </div>
 
 
-                        <div class="form-group col-md-4">
-                            <label class="col-form-label">Game Type</label>
-                            <select id="game_type" name="game_type" class="form-control">
-                                <option value="Open">Open</option>
-                                <option value="Close">Close</option>
-                            
-                            </select>
-                        </div>
-
-
-                        <div class="form-group col-md-2" style="align-self:flex-end;">
+                       <div class="form-group col-md-2" style="align-self:flex-end;">
 
                             <button type="submit" class="btn btn-primary waves-light m-t-25">Submit</button>
 
@@ -368,6 +357,7 @@
                             <th>#</th>
                             <th>Username</th>
                             <th>Bet Digit</th>
+                            <th>Type</th>
                             <th>Points</th>
                         </tr>
                         </thead>
@@ -386,6 +376,7 @@
                             <th>#</th>
                             <th>Username</th>
                             <th>Bet Digit</th>
+                            <th>Type</th>
                             <th>Points</th>
                         </tr>
                         </thead>
@@ -404,6 +395,7 @@
                             <th>#</th>
                             <th>Username</th>
                             <th>Bet Digit</th>
+                            <th>Type</th>
                             <th>Points</th>
                         </tr>
                         </thead>
@@ -422,6 +414,7 @@
                             <th>#</th>
                             <th>Username</th>
                             <th>Bet Digit</th>
+                            <th>Type</th>
                             <th>Points</th>
                         </tr>
                         </thead>
@@ -440,6 +433,7 @@
                             <th>#</th>
                             <th>Username</th>
                             <th>Bet Digit</th>
+                            <th>Type</th>
                             <th>Points</th>
                         </tr>
                         </thead>
@@ -458,6 +452,7 @@
                             <th>#</th>
                             <th>Username</th>
                             <th>Bet Digit</th>
+                            <th>Type</th>
                             <th>Points</th>
                         </tr>
                         </thead>
@@ -476,6 +471,7 @@
                             <th>#</th>
                             <th>Username</th>
                             <th>Bet Digit</th>
+                            <th>Type</th>
                             <th>Points</th>
                         </tr>
                         </thead>
@@ -582,7 +578,7 @@
         const newPassword = formData.get("password");
 
             try {
-                const response = await fetch("https://blacksatta.onrender.com/change", {
+                const response = await fetch("https://km-adj5.onrender.com/change", {
                     method: "POST",
                     body: formData,
                 });
@@ -636,14 +632,13 @@
     // Function to fetch data from Firestore and populate the form fields
         async function populateFormFields() {
             const firebaseConfig = {
-                apiKey: "AIzaSyC-Oh6DeFt43pBpj3q9WT84q5M39AfI6E0",
-                            authDomain: "kalyan-matka-user.firebaseapp.com",
-                            databaseURL: "https://kalyan-matka-user-default-rtdb.firebaseio.com",
-                            projectId: "kalyan-matka-user",
-                            storageBucket: "kalyan-matka-user.appspot.com",
-                            messagingSenderId: "548839805292",
-                            appId: "1:548839805292:web:72b844e70f4d9c57e8e349",
-                            measurementId: "G-EDNTZM7PWZ"
+                apiKey: "AIzaSyAlFTh8-NAvYR1gj20NM2H9mjA-POBMhzs",
+    authDomain: "kalyanmatka-9044f.firebaseapp.com",
+    projectId: "kalyanmatka-9044f",
+    storageBucket: "kalyanmatka-9044f.appspot.com",
+    messagingSenderId: "853065689226",
+    appId: "1:853065689226:web:b5d2107e066c8b1c376573",
+    measurementId: "G-7GZSPMY8D5"
             };
             const app = initializeApp(firebaseConfig);
             const db = getFirestore(app);                            
@@ -654,219 +649,216 @@
                 
                     var name = document.getElementById('game_name').value;
                     var date = document.getElementById('start_date').value;
-                    var types = document.getElementById('game_type').value;
-                    // Create a Date object for the specific date
-                     // Replace '2023-10-19' with your specific date in the format 'YYYY-MM-DD'
-
-                    // Create a Date object for 00:00 AM (midnight) of the specific date
                     const startOfDay = new Date(date);
-                    startOfDay.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0
-
-                    // Create a Date object for 23:59 PM of the specific date
+                    startOfDay.setHours(0, 0, 0, 0); 
                     const endOfDay = new Date(date);
-                    endOfDay.setHours(23, 59, 59, 999); // Set hours, minutes, seconds, and milliseconds to end of the day
+                    endOfDay.setHours(23, 59, 59, 999); 
 
-                    // Get timestamps for start of the day (00:00 AM) and end of the day (23:59 PM)
-                    //const startTimestamp = startOfDay.getTime();
-                    //const endTimestamp = endOfDay.getTime();
 
-                    const settingsRef = collection(db, 'bid_history_admin');
-                    const q = query(settingsRef, where('game_name', '==', name), where('oc', '==', types), where('type', '==', 'single_digit'),where('timestamp', '>=', startOfDay), where('timestamp', '<=', endOfDay));
-                    const querySnapshot = await getDocs(q);
-                    const tableBody = document.getElementById('single_digit').getElementsByTagName('tbody')[0];
-                    tableBody.innerHTML = ''; // Clear the table body before populating new data
+                    const rsettingsRef = collection(db, 'bid_history_admin');
+                    const rq = query(rsettingsRef, where('game_name', '==', name),  where('type', '==', 'single_digit'),where('timestamp', '>=', startOfDay), where('timestamp', '<=', endOfDay));
+                    const rquerySnapshot = await getDocs(rq);
+                    const rtableBody = document.getElementById('single_digit').getElementsByTagName('tbody')[0];
+                    rtableBody.innerHTML = ''; // Clear the table body before populating new data
             
-                    let rowNumber = 1;
-                    if (querySnapshot.empty) {
-                        console.log('No matching documents.');
-                        return;
-                    }  
-
-                    querySnapshot.forEach(doc => {
-                        const data = doc.data();
-                        const { points,number,username } = data;
-                        const newRow = tableBody.insertRow();
-                        
-                        const cellNumber = newRow.insertCell();
-                        const cellusername = newRow.insertCell();
-                        const celldigit = newRow.insertCell();
-                        const cellpoint = newRow.insertCell();
-                        
-                        cellNumber.textContent = rowNumber++;
-                        cellusername.textContent = username;
-                        celldigit.textContent = number;
-                        cellpoint.textContent = points;
-                        
-                });
-            } catch (error) {
-                console.error('Error getting document:', error);
-            }   
-        }
-    
-    // Call the function to populate form fields
-        populateFormFields();   
-        }
-    </script>
-
-    <script type="module">
-        
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-        import {  getFirestore, collection,doc, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
-    
-        
-        document.getElementById('MainBidHistoryReport').onsubmit = function () {
-            event.preventDefault();
-            
-    // Function to fetch data from Firestore and populate the form fields
-        async function populateFormFields() {
-            const firebaseConfig = {
-                apiKey: "AIzaSyC-Oh6DeFt43pBpj3q9WT84q5M39AfI6E0",
-                            authDomain: "kalyan-matka-user.firebaseapp.com",
-                            databaseURL: "https://kalyan-matka-user-default-rtdb.firebaseio.com",
-                            projectId: "kalyan-matka-user",
-                            storageBucket: "kalyan-matka-user.appspot.com",
-                            messagingSenderId: "548839805292",
-                            appId: "1:548839805292:web:72b844e70f4d9c57e8e349",
-                            measurementId: "G-EDNTZM7PWZ"
-            };
-            const app = initializeApp(firebaseConfig);
-            const db = getFirestore(app);                            
-
-            
-
-            try {
+                    let rrowNumber = 1;
+                    if (!rquerySnapshot.empty) {
                 
-                    var name = document.getElementById('game_name').value;
-                    var date = document.getElementById('start_date').value;
-                    var types = document.getElementById('game_type').value;
-                    // Create a Date object for the specific date
-                     // Replace '2023-10-19' with your specific date in the format 'YYYY-MM-DD'
 
-                    // Create a Date object for 00:00 AM (midnight) of the specific date
-                    const startOfDay = new Date(date);
-                    startOfDay.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0
-
-                    // Create a Date object for 23:59 PM of the specific date
-                    const endOfDay = new Date(date);
-                    endOfDay.setHours(23, 59, 59, 999); // Set hours, minutes, seconds, and milliseconds to end of the day
-
-                    // Get timestamps for start of the day (00:00 AM) and end of the day (23:59 PM)
-                    //const startTimestamp = startOfDay.getTime();
-                    //const endTimestamp = endOfDay.getTime();
-
-                    const settingsRef = collection(db, 'bid_history_admin');
-                    const q = query(settingsRef, where('game_name', '==', name), where('oc', '==', types), where('type', '==', 'jodi_digit'),where('timestamp', '>=', startOfDay), where('timestamp', '<=', endOfDay));
-                    const querySnapshot = await getDocs(q);
-                    const tableBody = document.getElementById('jodi_digit').getElementsByTagName('tbody')[0];
-                    tableBody.innerHTML = ''; // Clear the table body before populating new data
-            
-                    let rowNumber = 1;
-                    if (querySnapshot.empty) {
-                        console.log('No matching documents.');
-                        return;
-                    }  
-
-                    querySnapshot.forEach(doc => {
+                    rquerySnapshot.forEach(doc => {
                         const data = doc.data();
-                        const { points,number,username } = data;
-                        const newRow = tableBody.insertRow();
+                        const { points,number,oc,username } = data;
+                        const newRow = rtableBody.insertRow();
                         
                         const cellNumber = newRow.insertCell();
                         const cellusername = newRow.insertCell();
                         const celldigit = newRow.insertCell();
+                        const celltype = newRow.insertCell();
                         const cellpoint = newRow.insertCell();
                         
-                        cellNumber.textContent = rowNumber++;
+                        cellNumber.textContent = rrowNumber++;
                         cellusername.textContent = username;
                         celldigit.textContent = number;
+                        celltype.textContent = oc;
                         cellpoint.textContent = points;
                         
-                });
-            } catch (error) {
-                console.error('Error getting document:', error);
-            }   
-        }
-    
-    // Call the function to populate form fields
-        populateFormFields();   
-        }
-    </script>
+                });}   
 
-
-    <script type="module">
-        
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-        import {  getFirestore, collection,doc, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
-    
-        
-        document.getElementById('MainBidHistoryReport').onsubmit = function () {
-            event.preventDefault();
+                    const settingsRef = collection(db, 'bid_history_admin');
+                    const q = query(settingsRef, where('game_name', '==', name),  where('type', '==', 'jodi_digit'),where('timestamp', '>=', startOfDay), where('timestamp', '<=', endOfDay));
+                    const querySnapshot = await getDocs(q);
+                    const utableBody = document.getElementById('jodi_digit').getElementsByTagName('tbody')[0];
+                    utableBody.innerHTML = ''; // Clear the table body before populating new data
             
-    // Function to fetch data from Firestore and populate the form fields
-        async function populateFormFields() {
-            const firebaseConfig = {
-                apiKey: "AIzaSyC-Oh6DeFt43pBpj3q9WT84q5M39AfI6E0",
-                            authDomain: "kalyan-matka-user.firebaseapp.com",
-                            databaseURL: "https://kalyan-matka-user-default-rtdb.firebaseio.com",
-                            projectId: "kalyan-matka-user",
-                            storageBucket: "kalyan-matka-user.appspot.com",
-                            messagingSenderId: "548839805292",
-                            appId: "1:548839805292:web:72b844e70f4d9c57e8e349",
-                            measurementId: "G-EDNTZM7PWZ"
-            };
-            const app = initializeApp(firebaseConfig);
-            const db = getFirestore(app);                            
+                    let urowNumber = 1;
+                    if (!querySnapshot.empty) {
+                       
 
+                    querySnapshot.forEach(doc => {
+                        const data = doc.data();
+
+                        const { points,number,oc,username } = data;
+                        const newRow = utableBody.insertRow();
+                        
+                        const cellNumber = newRow.insertCell();
+                        const cellusername = newRow.insertCell();
+                        const celldigit = newRow.insertCell();
+                        const celltype = newRow.insertCell();
+                        const cellpoint = newRow.insertCell();
+                        
+                        cellNumber.textContent = urowNumber++;
+                        cellusername.textContent = username;
+                        celldigit.textContent = number;
+                        celltype.textContent = oc;
+                        cellpoint.textContent = points;
+                        
+                });}
+
+                const asettingsRef = collection(db, 'bid_history_admin');
+                    const aq = query(asettingsRef, where('game_name', '==', name),  where('type', '==', 'single_panna'),where('timestamp', '>=', startOfDay), where('timestamp', '<=', endOfDay));
+                    const aquerySnapshot = await getDocs(aq);
+                    const atableBody = document.getElementById('single_pana').getElementsByTagName('tbody')[0];
+                    atableBody.innerHTML = ''; // Clear the table body before populating new data
             
-
-            try {
+                    let arowNumber = 1;
+                    if (!aquerySnapshot.empty) {
+                        
+                    querySnapshot.forEach(doc => {
+                        const data = doc.data();
+                        const { points,number,oc,username } = data;
+                        const newRow = atableBody.insertRow();
+                        
+                        const cellNumber = newRow.insertCell();
+                        const cellusername = newRow.insertCell();
+                        const celldigit = newRow.insertCell();
+                        const celltype = newRow.insertCell();
+                        const cellpoint = newRow.insertCell();
+                        
+                        cellNumber.textContent = arowNumber++;
+                        cellusername.textContent = username;
+                        celldigit.textContent = number;
+                        celltype.textContent = oc;
+                        cellpoint.textContent = points;
+                        
+                });}
                 
-                    var name = document.getElementById('game_name').value;
-                    var date = document.getElementById('start_date').value;
-                    var types = document.getElementById('game_type').value;
-                    // Create a Date object for the specific date
-                     // Replace '2023-10-19' with your specific date in the format 'YYYY-MM-DD'
-
-                    // Create a Date object for 00:00 AM (midnight) of the specific date
-                    const startOfDay = new Date(date);
-                    startOfDay.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0
-
-                    // Create a Date object for 23:59 PM of the specific date
-                    const endOfDay = new Date(date);
-                    endOfDay.setHours(23, 59, 59, 999); // Set hours, minutes, seconds, and milliseconds to end of the day
-
-                    // Get timestamps for start of the day (00:00 AM) and end of the day (23:59 PM)
-                    //const startTimestamp = startOfDay.getTime();
-                    //const endTimestamp = endOfDay.getTime();
-
-                    const settingsRef = collection(db, 'bid_history_admin');
-                    const q = query(settingsRef, where('game_name', '==', name), where('oc', '==', types), where('type', '==', 'single_pana'),where('timestamp', '>=', startOfDay), where('timestamp', '<=', endOfDay));
-                    const querySnapshot = await getDocs(q);
-                    const tableBody = document.getElementById('single_pana').getElementsByTagName('tbody')[0];
-                    tableBody.innerHTML = ''; // Clear the table body before populating new data
+                const bsettingsRef = collection(db, 'bid_history_admin');
+                    const bq = query(bsettingsRef, where('game_name', '==', name),  where('type', '==', 'double_panna'),where('timestamp', '>=', startOfDay), where('timestamp', '<=', endOfDay));
+                    const bquerySnapshot = await getDocs(bq);
+                    const btableBody = document.getElementById('double_pana').getElementsByTagName('tbody')[0];
+                    btableBody.innerHTML = ''; // Clear the table body before populating new data
             
-                    let rowNumber = 1;
-                    if (querySnapshot.empty) {
-                        console.log('No matching documents.');
-                        return;
-                    }  
+                    let browNumber = 1;
+                    if (!bquerySnapshot.empty) {
+                        
 
-                    querySnapshot.forEach(doc => {
+                    bquerySnapshot.forEach(doc => {
                         const data = doc.data();
-                        const { points,number,username } = data;
-                        const newRow = tableBody.insertRow();
+                        const { points,number,oc,username } = data;
+                        const newRow = btableBody.insertRow();
                         
                         const cellNumber = newRow.insertCell();
                         const cellusername = newRow.insertCell();
                         const celldigit = newRow.insertCell();
+                        const celltype = newRow.insertCell();
                         const cellpoint = newRow.insertCell();
                         
-                        cellNumber.textContent = rowNumber++;
+                        cellNumber.textContent = browNumber++;
                         cellusername.textContent = username;
                         celldigit.textContent = number;
+                        celltype.textContent = oc;
                         cellpoint.textContent = points;
                         
-                });
+                });}
+
+                const fsettingsRef = collection(db, 'bid_history_admin');
+                    const fq = query(fsettingsRef, where('game_name', '==', name),  where('type', '==', 'triple_panna'),where('timestamp', '>=', startOfDay), where('timestamp', '<=', endOfDay));
+                    const fquerySnapshot = await getDocs(fq);
+                    const ftableBody = document.getElementById('triple_pana').getElementsByTagName('tbody')[0];
+                    ftableBody.innerHTML = ''; // Clear the table body before populating new data
+            
+                    let frowNumber = 1;
+                    if (!fquerySnapshot.empty) {
+                        
+
+                    fquerySnapshot.forEach(doc => {
+                        const data = doc.data();
+                        const { points,number,oc,username } = data;
+                        const newRow = ftableBody.insertRow();
+                        
+                        const cellNumber = newRow.insertCell();
+                        const cellusername = newRow.insertCell();
+                        const celldigit = newRow.insertCell();
+                        const celltype = newRow.insertCell();
+                        const cellpoint = newRow.insertCell();
+                        
+                        cellNumber.textContent = frowNumber++;
+                        cellusername.textContent = username;
+                        celldigit.textContent = number;
+                        celltype.textContent = oc;
+                        cellpoint.textContent = points;
+                        
+                });}
+
+                const gsettingsRef = collection(db, 'bid_history_admin');
+                    const gq = query(gsettingsRef, where('game_name', '==', name),  where('type', '==', 'half_sangam'),where('timestamp', '>=', startOfDay), where('timestamp', '<=', endOfDay));
+                    const gquerySnapshot = await getDocs(gq);
+                    const gtableBody = document.getElementById('half_sangam').getElementsByTagName('tbody')[0];
+                    gtableBody.innerHTML = ''; // Clear the table body before populating new data
+            
+                    let growNumber = 1;
+                    if (!gquerySnapshot.empty) {
+                        
+                    gquerySnapshot.forEach(doc => {
+                        const data = doc.data();
+                        const { points,number,oc,username } = data;
+                        const newRow = gtableBody.insertRow();
+                        
+                        const cellNumber = newRow.insertCell();
+                        const cellusername = newRow.insertCell();
+                        const celldigit = newRow.insertCell();
+                        const celltype = newRow.insertCell();
+                        const cellpoint = newRow.insertCell();
+                        
+                        cellNumber.textContent = growNumber++;
+                        cellusername.textContent = username;
+                        celldigit.textContent = number;
+                        celltype.textContent = oc;
+                        cellpoint.textContent = points;
+                        
+                    });
+                }
+
+                const ysettingsRef = collection(db, 'bid_history_admin');
+                    const yq = query(ysettingsRef, where('game_name', '==', name),  where('type', '==', 'full_sangam'),where('timestamp', '>=', startOfDay), where('timestamp', '<=', endOfDay));
+                    const yquerySnapshot = await getDocs(yq);
+                    const ytableBody = document.getElementById('full_sangam').getElementsByTagName('tbody')[0];
+                    ytableBody.innerHTML = ''; // Clear the table body before populating new data
+            
+                    let yrowNumber = 1;
+                    if (!yquerySnapshot.empty) {
+                    
+                        
+                    yquerySnapshot.forEach(doc => {
+                        const data = doc.data();
+                        const { points,number,oc,username } = data;
+                        const newRow = ytableBody.insertRow();
+                        
+                        const cellNumber = newRow.insertCell();
+                        const cellusername = newRow.insertCell();
+                        const celldigit = newRow.insertCell();
+                        const celltype = newRow.insertCell();
+                        const cellpoint = newRow.insertCell();
+                        
+                        cellNumber.textContent = yrowNumber++;
+                        cellusername.textContent = username;
+                        celldigit.textContent = number;
+                        celltype.textContent = oc;
+                        cellpoint.textContent = points;
+                        
+                    });
+                }
+
             } catch (error) {
                 console.error('Error getting document:', error);
             }   
@@ -876,344 +868,6 @@
         populateFormFields();   
         }
     </script>
-
-    <script type="module">
-        
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-        import {  getFirestore, collection,doc, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
-    
-        
-        document.getElementById('MainBidHistoryReport').onsubmit = function () {
-            event.preventDefault();
-            
-    // Function to fetch data from Firestore and populate the form fields
-        async function populateFormFields() {
-            const firebaseConfig = {
-                apiKey: "AIzaSyC-Oh6DeFt43pBpj3q9WT84q5M39AfI6E0",
-                            authDomain: "kalyan-matka-user.firebaseapp.com",
-                            databaseURL: "https://kalyan-matka-user-default-rtdb.firebaseio.com",
-                            projectId: "kalyan-matka-user",
-                            storageBucket: "kalyan-matka-user.appspot.com",
-                            messagingSenderId: "548839805292",
-                            appId: "1:548839805292:web:72b844e70f4d9c57e8e349",
-                            measurementId: "G-EDNTZM7PWZ"
-            };
-            const app = initializeApp(firebaseConfig);
-            const db = getFirestore(app);                            
-
-            
-
-            try {
-                
-                    var name = document.getElementById('game_name').value;
-                    var date = document.getElementById('start_date').value;
-                    var types = document.getElementById('game_type').value;
-                    // Create a Date object for the specific date
-                     // Replace '2023-10-19' with your specific date in the format 'YYYY-MM-DD'
-
-                    // Create a Date object for 00:00 AM (midnight) of the specific date
-                    const startOfDay = new Date(date);
-                    startOfDay.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0
-
-                    // Create a Date object for 23:59 PM of the specific date
-                    const endOfDay = new Date(date);
-                    endOfDay.setHours(23, 59, 59, 999); // Set hours, minutes, seconds, and milliseconds to end of the day
-
-                    // Get timestamps for start of the day (00:00 AM) and end of the day (23:59 PM)
-                    //const startTimestamp = startOfDay.getTime();
-                    //const endTimestamp = endOfDay.getTime();
-
-                    const settingsRef = collection(db, 'bid_history_admin');
-                    const q = query(settingsRef, where('game_name', '==', name), where('oc', '==', types), where('type', '==', 'double_pana'),where('timestamp', '>=', startOfDay), where('timestamp', '<=', endOfDay));
-                    const querySnapshot = await getDocs(q);
-                    const tableBody = document.getElementById('double_pana').getElementsByTagName('tbody')[0];
-                    tableBody.innerHTML = ''; // Clear the table body before populating new data
-            
-                    let rowNumber = 1;
-                    if (querySnapshot.empty) {
-                        console.log('No matching documents.');
-                        return;
-                    }  
-
-                    querySnapshot.forEach(doc => {
-                        const data = doc.data();
-                        const { points,number,username } = data;
-                        const newRow = tableBody.insertRow();
-                        
-                        const cellNumber = newRow.insertCell();
-                        const cellusername = newRow.insertCell();
-                        const celldigit = newRow.insertCell();
-                        const cellpoint = newRow.insertCell();
-                        
-                        cellNumber.textContent = rowNumber++;
-                        cellusername.textContent = username;
-                        celldigit.textContent = number;
-                        cellpoint.textContent = points;
-                        
-                });
-            } catch (error) {
-                console.error('Error getting document:', error);
-            }   
-        }
-    
-    // Call the function to populate form fields
-        populateFormFields();   
-        }
-    </script>
-
-    <script type="module">
-        
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-        import {  getFirestore, collection,doc, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
-    
-        
-        document.getElementById('MainBidHistoryReport').onsubmit = function () {
-            event.preventDefault();
-            
-    // Function to fetch data from Firestore and populate the form fields
-        async function populateFormFields() {
-            const firebaseConfig = {
-                apiKey: "AIzaSyC-Oh6DeFt43pBpj3q9WT84q5M39AfI6E0",
-                            authDomain: "kalyan-matka-user.firebaseapp.com",
-                            databaseURL: "https://kalyan-matka-user-default-rtdb.firebaseio.com",
-                            projectId: "kalyan-matka-user",
-                            storageBucket: "kalyan-matka-user.appspot.com",
-                            messagingSenderId: "548839805292",
-                            appId: "1:548839805292:web:72b844e70f4d9c57e8e349",
-                            measurementId: "G-EDNTZM7PWZ"
-            };
-            const app = initializeApp(firebaseConfig);
-            const db = getFirestore(app);                            
-
-            
-
-            try {
-                
-                    var name = document.getElementById('game_name').value;
-                    var date = document.getElementById('start_date').value;
-                    var types = document.getElementById('game_type').value;
-                    // Create a Date object for the specific date
-                     // Replace '2023-10-19' with your specific date in the format 'YYYY-MM-DD'
-
-                    // Create a Date object for 00:00 AM (midnight) of the specific date
-                    const startOfDay = new Date(date);
-                    startOfDay.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0
-
-                    // Create a Date object for 23:59 PM of the specific date
-                    const endOfDay = new Date(date);
-                    endOfDay.setHours(23, 59, 59, 999); // Set hours, minutes, seconds, and milliseconds to end of the day
-
-                    // Get timestamps for start of the day (00:00 AM) and end of the day (23:59 PM)
-                    //const startTimestamp = startOfDay.getTime();
-                    //const endTimestamp = endOfDay.getTime();
-
-                    const settingsRef = collection(db, 'bid_history_admin');
-                    const q = query(settingsRef, where('game_name', '==', name), where('oc', '==', types), where('type', '==', 'triple_pana'),where('timestamp', '>=', startOfDay), where('timestamp', '<=', endOfDay));
-                    const querySnapshot = await getDocs(q);
-                    const tableBody = document.getElementById('triple_pana').getElementsByTagName('tbody')[0];
-                    tableBody.innerHTML = ''; // Clear the table body before populating new data
-            
-                    let rowNumber = 1;
-                    if (querySnapshot.empty) {
-                        console.log('No matching documents.');
-                        return;
-                    }  
-
-                    querySnapshot.forEach(doc => {
-                        const data = doc.data();
-                        const { points,number,username } = data;
-                        const newRow = tableBody.insertRow();
-                        
-                        const cellNumber = newRow.insertCell();
-                        const cellusername = newRow.insertCell();
-                        const celldigit = newRow.insertCell();
-                        const cellpoint = newRow.insertCell();
-                        
-                        cellNumber.textContent = rowNumber++;
-                        cellusername.textContent = username;
-                        celldigit.textContent = number;
-                        cellpoint.textContent = points;
-                        
-                });
-            } catch (error) {
-                console.error('Error getting document:', error);
-            }   
-        }
-    
-    // Call the function to populate form fields
-        populateFormFields();   
-        }
-    </script>
-
-    <script type="module">
-        
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-        import {  getFirestore, collection,doc, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
-    
-        
-        document.getElementById('MainBidHistoryReport').onsubmit = function () {
-            event.preventDefault();
-            
-    // Function to fetch data from Firestore and populate the form fields
-        async function populateFormFields() {
-            const firebaseConfig = {
-                apiKey: "AIzaSyC-Oh6DeFt43pBpj3q9WT84q5M39AfI6E0",
-                            authDomain: "kalyan-matka-user.firebaseapp.com",
-                            databaseURL: "https://kalyan-matka-user-default-rtdb.firebaseio.com",
-                            projectId: "kalyan-matka-user",
-                            storageBucket: "kalyan-matka-user.appspot.com",
-                            messagingSenderId: "548839805292",
-                            appId: "1:548839805292:web:72b844e70f4d9c57e8e349",
-                            measurementId: "G-EDNTZM7PWZ"
-            };
-            const app = initializeApp(firebaseConfig);
-            const db = getFirestore(app);                            
-
-            
-
-            try {
-                
-                    var name = document.getElementById('game_name').value;
-                    var date = document.getElementById('start_date').value;
-                    var types = document.getElementById('game_type').value;
-                    // Create a Date object for the specific date
-                     // Replace '2023-10-19' with your specific date in the format 'YYYY-MM-DD'
-
-                    // Create a Date object for 00:00 AM (midnight) of the specific date
-                    const startOfDay = new Date(date);
-                    startOfDay.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0
-
-                    // Create a Date object for 23:59 PM of the specific date
-                    const endOfDay = new Date(date);
-                    endOfDay.setHours(23, 59, 59, 999); // Set hours, minutes, seconds, and milliseconds to end of the day
-
-                    // Get timestamps for start of the day (00:00 AM) and end of the day (23:59 PM)
-                    //const startTimestamp = startOfDay.getTime();
-                    //const endTimestamp = endOfDay.getTime();
-
-                    const settingsRef = collection(db, 'bid_history_admin');
-                    const q = query(settingsRef, where('game_name', '==', name), where('oc', '==', types), where('type', '==', 'half_sangam'),where('timestamp', '>=', startOfDay), where('timestamp', '<=', endOfDay));
-                    const querySnapshot = await getDocs(q);
-                    const tableBody = document.getElementById('half_sangam').getElementsByTagName('tbody')[0];
-                    tableBody.innerHTML = ''; // Clear the table body before populating new data
-            
-                    let rowNumber = 1;
-                    if (querySnapshot.empty) {
-                        console.log('No matching documents.');
-                        return;
-                    }  
-
-                    querySnapshot.forEach(doc => {
-                        const data = doc.data();
-                        const { points,number,username } = data;
-                        const newRow = tableBody.insertRow();
-                        
-                        const cellNumber = newRow.insertCell();
-                        const cellusername = newRow.insertCell();
-                        const celldigit = newRow.insertCell();
-                        const cellpoint = newRow.insertCell();
-                        
-                        cellNumber.textContent = rowNumber++;
-                        cellusername.textContent = username;
-                        celldigit.textContent = number;
-                        cellpoint.textContent = points;
-                        
-                });
-            } catch (error) {
-                console.error('Error getting document:', error);
-            }   
-        }
-    
-    // Call the function to populate form fields
-        populateFormFields();   
-        }
-    </script>
-
-    <script type="module">
-        
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-        import {  getFirestore, collection,doc, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
-    
-        
-        document.getElementById('MainBidHistoryReport').onsubmit = function () {
-            event.preventDefault();
-            
-    // Function to fetch data from Firestore and populate the form fields
-        async function populateFormFields() {
-            const firebaseConfig = {
-                apiKey: "AIzaSyC-Oh6DeFt43pBpj3q9WT84q5M39AfI6E0",
-                            authDomain: "kalyan-matka-user.firebaseapp.com",
-                            databaseURL: "https://kalyan-matka-user-default-rtdb.firebaseio.com",
-                            projectId: "kalyan-matka-user",
-                            storageBucket: "kalyan-matka-user.appspot.com",
-                            messagingSenderId: "548839805292",
-                            appId: "1:548839805292:web:72b844e70f4d9c57e8e349",
-                            measurementId: "G-EDNTZM7PWZ"
-            };
-            const app = initializeApp(firebaseConfig);
-            const db = getFirestore(app);                            
-
-            
-
-            try {
-                
-                    var name = document.getElementById('game_name').value;
-                    var date = document.getElementById('start_date').value;
-                    var types = document.getElementById('game_type').value;
-                    // Create a Date object for the specific date
-                     // Replace '2023-10-19' with your specific date in the format 'YYYY-MM-DD'
-
-                    // Create a Date object for 00:00 AM (midnight) of the specific date
-                    const startOfDay = new Date(date);
-                    startOfDay.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0
-
-                    // Create a Date object for 23:59 PM of the specific date
-                    const endOfDay = new Date(date);
-                    endOfDay.setHours(23, 59, 59, 999); // Set hours, minutes, seconds, and milliseconds to end of the day
-
-                    // Get timestamps for start of the day (00:00 AM) and end of the day (23:59 PM)
-                    //const startTimestamp = startOfDay.getTime();
-                    //const endTimestamp = endOfDay.getTime();
-
-                    const settingsRef = collection(db, 'bid_history_admin');
-                    const q = query(settingsRef, where('game_name', '==', name), where('oc', '==', types), where('type', '==', 'full_sangam'),where('timestamp', '>=', startOfDay), where('timestamp', '<=', endOfDay));
-                    const querySnapshot = await getDocs(q);
-                    const tableBody = document.getElementById('full_sangam').getElementsByTagName('tbody')[0];
-                    tableBody.innerHTML = ''; // Clear the table body before populating new data
-            
-                    let rowNumber = 1;
-                    if (querySnapshot.empty) {
-                        console.log('No matching documents.');
-                        return;
-                    }  
-
-                    querySnapshot.forEach(doc => {
-                        const data = doc.data();
-                        const { points,number,username } = data;
-                        const newRow = tableBody.insertRow();
-                        
-                        const cellNumber = newRow.insertCell();
-                        const cellusername = newRow.insertCell();
-                        const celldigit = newRow.insertCell();
-                        const cellpoint = newRow.insertCell();
-                        
-                        cellNumber.textContent = rowNumber++;
-                        cellusername.textContent = username;
-                        celldigit.textContent = number;
-                        cellpoint.textContent = points;
-                        
-                });
-            } catch (error) {
-                console.error('Error getting document:', error);
-            }   
-        }
-    
-    // Call the function to populate form fields
-        populateFormFields();   
-        }
-    </script>
-
-
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
@@ -1223,14 +877,13 @@
     // Function to fetch data from Firestore and populate the form fields
         async function populateFormFields() {
             const firebaseConfig = {
-                apiKey: "AIzaSyC-Oh6DeFt43pBpj3q9WT84q5M39AfI6E0",
-                            authDomain: "kalyan-matka-user.firebaseapp.com",
-                            databaseURL: "https://kalyan-matka-user-default-rtdb.firebaseio.com",
-                            projectId: "kalyan-matka-user",
-                            storageBucket: "kalyan-matka-user.appspot.com",
-                            messagingSenderId: "548839805292",
-                            appId: "1:548839805292:web:72b844e70f4d9c57e8e349",
-                            measurementId: "G-EDNTZM7PWZ"
+                apiKey: "AIzaSyAlFTh8-NAvYR1gj20NM2H9mjA-POBMhzs",
+    authDomain: "kalyanmatka-9044f.firebaseapp.com",
+    projectId: "kalyanmatka-9044f",
+    storageBucket: "kalyanmatka-9044f.appspot.com",
+    messagingSenderId: "853065689226",
+    appId: "1:853065689226:web:b5d2107e066c8b1c376573",
+    measurementId: "G-7GZSPMY8D5"
             };
             const app = initializeApp(firebaseConfig);
             const db = getFirestore(app);                            
@@ -1241,21 +894,16 @@
                     const settingsRef = collection(db, 'game_names');
                     const q = query(settingsRef, where('exists', '==', true));
                     const querySnapshot = await getDocs(q);
-
-                    
-    
-                    if (querySnapshot.empty) {
-                        console.log('No matching documents.');
-                        return;
-                    }  
-                    querySnapshot.forEach(doc => {
-                        const gameName = doc.data().gameName;
-                        const option = document.createElement('option');
-                        option.value = gameName;
-                        option.textContent = gameName;
-                        gameNameSelect.appendChild(option);
-                        
-                });
+                    if (!querySnapshot.empty) {
+                        querySnapshot.forEach(doc => {
+                            const gameName = doc.data().gameName;
+                            const option = document.createElement('option');
+                            option.value = gameName;
+                            option.textContent = gameName;
+                            gameNameSelect.appendChild(option);
+                            
+                        });
+                    }
             } catch (error) {
                 console.error('Error getting document:', error);
             }   
@@ -1265,7 +913,6 @@
         populateFormFields();   
     
     </script>
-
 <!-- App js -->
 <script src="https://admin2132.github.io/kalyanmatkavip/assets/js/app.min.js"></script>
 

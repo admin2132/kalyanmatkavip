@@ -105,14 +105,13 @@
                       
                         // Firebase configuration
                         const firebaseConfig = {
-                            apiKey: "AIzaSyC-Oh6DeFt43pBpj3q9WT84q5M39AfI6E0",
-                            authDomain: "kalyan-matka-user.firebaseapp.com",
-                            databaseURL: "https://kalyan-matka-user-default-rtdb.firebaseio.com",
-                            projectId: "kalyan-matka-user",
-                            storageBucket: "kalyan-matka-user.appspot.com",
-                            messagingSenderId: "548839805292",
-                            appId: "1:548839805292:web:72b844e70f4d9c57e8e349",
-                            measurementId: "G-EDNTZM7PWZ"
+                            apiKey: "AIzaSyAlFTh8-NAvYR1gj20NM2H9mjA-POBMhzs",
+  authDomain: "kalyanmatka-9044f.firebaseapp.com",
+  projectId: "kalyanmatka-9044f",
+  storageBucket: "kalyanmatka-9044f.appspot.com",
+  messagingSenderId: "853065689226",
+  appId: "1:853065689226:web:b5d2107e066c8b1c376573",
+  measurementId: "G-7GZSPMY8D5"
                         };
                       
                         // Initialize Firebase
@@ -354,14 +353,9 @@
                                 <input type="text" name="game_name" id="game_name" class="form-control" required
                                        placeholder="Enter Game Name"/>
                             </div>
-
-                            <div class="form-group col-6 mt-2">
-                                <label for="open_time">Open Time</label>
-                                <input required name="open_time" id="open_time" class="form-control digits" type="time"
-                                       value="">
-
-                            </div>
-                            <div class="form-group col-6 mt-2">
+                            
+                            <h5> </h5>
+                            <div class="form-group col-12">
                                 <label for="close_time">Close Time</label>
                                 <input required name="close_time" id="close_time" class="form-control digits"
                                        type="time"
@@ -385,14 +379,14 @@
                         const formData = new FormData(this);
                 
                         // Send form data using Fetch API
-                        fetch('https://blacksatta.onrender.com/gameadd', {
+                        fetch('https://km-adj5.onrender.com/gameadd', {
                             method: 'POST',
                             body: formData
                         })
                         .then(response => {
                             if (response.ok) {
                                 // Form submission was successful, redirect to the desired link
-                                window.location.href = 'https://admin2132.github.io/kalyanmatkavip/dashboard'; // Change this URL to the desired redirect URL
+                                window.location.href = 'https://admin2132.github.io/kalyanmatkavip/starline/index'; // Change this URL to the desired redirect URL
                             } else {
                                 // Handle errors if the form submission fails
                                 console.error('Form submission failed');
@@ -506,7 +500,7 @@
         const newPassword = formData.get("password");
 
             try {
-                const response = await fetch("https://blacksatta.onrender.com/change", {
+                const response = await fetch("https://km-adj5.onrender.com/change", {
                     method: "POST",
                     body: formData,
                 });
@@ -530,13 +524,13 @@
 // Function to fetch data from Firestore and populate the form fields
     async function populateFormFields() {
         const firebaseConfig = {
-            apiKey: "AIzaSyBo0HFBbSciDSprZ6ATVw6D7qJoijenkBs",
-            authDomain: "black-satta-f197b.firebaseapp.com",
-            projectId: "black-satta-f197b",
-            storageBucket: "black-satta-f197b.appspot.com",
-            messagingSenderId: "310887564056",
-            appId: "1:310887564056:web:08f4e4375caa4224c9946d",
-            measurementId: "G-HWJ4VQGEDH"
+            apiKey: "AIzaSyAlFTh8-NAvYR1gj20NM2H9mjA-POBMhzs",
+  authDomain: "kalyanmatka-9044f.firebaseapp.com",
+  projectId: "kalyanmatka-9044f",
+  storageBucket: "kalyanmatka-9044f.appspot.com",
+  messagingSenderId: "853065689226",
+  appId: "1:853065689226:web:b5d2107e066c8b1c376573",
+  measurementId: "G-7GZSPMY8D5"
         };
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);                            
@@ -557,7 +551,7 @@
                 }  
                 querySnapshot.forEach(doc => {
                     const data = doc.data();
-                    const { gameName, open, gameNumber, bidopen } = data;
+                    const { gameName, close,timestamps,sat,sun, gameNumber, bidopen } = data;
                     const newRow = tableBody.insertRow();
                     
                     const cellNumber = newRow.insertCell();
@@ -569,15 +563,78 @@
 
                     cellNumber.textContent = rowNumber++;
                     cellGameName.textContent = gameName;
-                    cellGameTime.textContent = open;
+                    cellGameTime.textContent = close;
                     cellResult.textContent = gameNumber;
-                    if(bidopen===true)
+                    const currentDate = new Date();
+                    const currentDay = currentDate.getDay();
+                    if(currentDay==0 && sun ==0)
                     {
-                        cellMarketStatus.textContent = "running";
-                    }else
+                        cellMarketStatus.textContent = "closed";
+                    }else if (currentDay==6 && sat ==0)
                     {
                         cellMarketStatus.textContent = "closed";
                     }
+                    else{
+                        const jsDate = timestamps.toDate();
+
+                        // Get hours, minutes, and seconds from the Date object
+                        const firebaseHours = jsDate.getHours();
+                        const firebaseMinutes = jsDate.getMinutes();
+                        
+                        // Get current time
+                        const currentDate = new Date();
+                        const currentHours = currentDate.getHours();
+                        const currentMinutes = currentDate.getMinutes();
+                        
+                        // Compare current time with Firebase time
+                        if (
+                          currentHours < firebaseHours ||
+                          (currentHours === firebaseHours &&
+                            (currentMinutes <= firebaseMinutes))
+                        ){
+                            cellMarketStatus.textContent = "running";
+                        }
+                        else{
+                            cellMarketStatus.textContent = "closed";
+                        }
+                    }
+                    const button = document.createElement('button');
+                    button.textContent ='EDIT'
+                    button.classList.add("btn", "btn-primary", "btn-xs", "mr-1");
+                    const link = `https://admin2132.github.io/kalyanmatkavip/starline/edit/gameProfile.html?gameName=${gameName}`;
+                    button.onclick = function() {
+                        window.location.href = link;
+                    };
+
+                    // Append the button to the cellAction cell
+                    cellAction.appendChild(button);
+                    const buttons = document.createElement('button');
+                    buttons.textContent ='DELETE'
+                    buttons.classList.add("btn", "btn-danger", "btn-xs", "mr-1");
+                    buttons.addEventListener("click", async () => {
+                        const formData = new FormData();
+                        formData.append('game_name', gameName);
+                        try {
+                            // Send the value to the server using fetch API                    
+                            const response = await fetch('https://km-adj5.onrender.com/updd', {
+                                method: 'POST',
+                                body: formData,
+                            });
+                            // Check if the request was successful
+                            if (response.ok) {
+                                // Reload the page after sending the value to the server
+                                window.location.reload();
+                            } else {
+                                // Handle the error if the request was not successful
+                                console.error('Error sending data to the server');
+                            }
+                        } catch (error) {
+                            // Handle any other errors that might occur
+                            console.error('Error:', error);
+                        }
+                    });
+
+                    cellAction.appendChild(buttons);
             });
         } catch (error) {
             console.error('Error getting document:', error);

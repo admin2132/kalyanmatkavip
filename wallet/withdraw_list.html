@@ -104,14 +104,13 @@
                       
                         // Firebase configuration
                         const firebaseConfig = {
-                            apiKey: "AIzaSyC-Oh6DeFt43pBpj3q9WT84q5M39AfI6E0",
-                            authDomain: "kalyan-matka-user.firebaseapp.com",
-                            databaseURL: "https://kalyan-matka-user-default-rtdb.firebaseio.com",
-                            projectId: "kalyan-matka-user",
-                            storageBucket: "kalyan-matka-user.appspot.com",
-                            messagingSenderId: "548839805292",
-                            appId: "1:548839805292:web:72b844e70f4d9c57e8e349",
-                            measurementId: "G-EDNTZM7PWZ"
+                            apiKey: "AIzaSyAlFTh8-NAvYR1gj20NM2H9mjA-POBMhzs",
+  authDomain: "kalyanmatka-9044f.firebaseapp.com",
+  projectId: "kalyanmatka-9044f",
+  storageBucket: "kalyanmatka-9044f.appspot.com",
+  messagingSenderId: "853065689226",
+  appId: "1:853065689226:web:b5d2107e066c8b1c376573",
+  measurementId: "G-7GZSPMY8D5"
                         };
                       
                         // Initialize Firebase
@@ -311,13 +310,11 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>User Name</th>
-                            <th>Mobile</th>
+                            <th>Upi</th>
                             <th>Amount</th>
                             <th>Date</th>
                             <th>Status</th>
-                            <th>Action</th>
-
+                            <th>View</th>
                         </tr>
                         </thead>
                         <tbody></tbody>
@@ -420,7 +417,7 @@
         const newPassword = formData.get("password");
 
             try {
-                const response = await fetch("https://blacksatta.onrender.com/change", {
+                const response = await fetch("https://km-adj5.onrender.com/change", {
                     method: "POST",
                     body: formData,
                 });
@@ -437,6 +434,143 @@
     });
 </script>
 
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+    import {  getFirestore, collection,doc, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
+
+    // 
+// Function to fetch data from Firestore and populate the form fields
+    async function populateFormFields() {
+        const firebaseConfig = {
+            apiKey: "AIzaSyAlFTh8-NAvYR1gj20NM2H9mjA-POBMhzs",
+  authDomain: "kalyanmatka-9044f.firebaseapp.com",
+  projectId: "kalyanmatka-9044f",
+  storageBucket: "kalyanmatka-9044f.appspot.com",
+  messagingSenderId: "853065689226",
+  appId: "1:853065689226:web:b5d2107e066c8b1c376573",
+  measurementId: "G-7GZSPMY8D5"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);                            
+
+        try {
+                const settingsRef = collection(db, 'withdraw_points');
+                const q = query(settingsRef);
+                const querySnapshot = await getDocs(q);
+                const tableBody = document.getElementById('withdrawReqList').getElementsByTagName('tbody')[0];
+                tableBody.innerHTML = ''; // Clear the table body before populating new data
+        
+                let rowNumber = 1;
+                if (!querySnapshot.empty) {
+                    
+                    const promises = querySnapshot.docs.map(async doc => {
+                        const data = doc.data();
+                        const { createdTimestamp, points,state,upi , userId } = data;
+                        const newRow = tableBody.insertRow();
+                        
+                        const cellNumber = newRow.insertCell();
+                        const cellphone = newRow.insertCell();
+                        const cellamt = newRow.insertCell();
+                        const celldate = newRow.insertCell();
+                        const cellstatus = newRow.insertCell();
+                        const cellaction = newRow.insertCell();
+
+                        cellNumber.textContent = rowNumber++;
+                        cellphone.textContent = upi;
+                        cellamt.textContent = points;
+                        celldate.textContent = createdTimestamp.toDate().toDateString().substring(0, 11);
+                        const button = document.createElement('button');
+                        button.classList.add("mdi", "mdi-eye", "font-size-18", "text-primary");
+                        button.style.border = 'none'; /* Remove border */
+                        button.style.backgroundColor = '#ffffff'; /* Set background color to transparent */
+                        button.style.padding = '0';
+                        const link = `https://admin2132.github.io/kalyanmatkavip/user/profile/userProfile.html?userId=${userId}`;
+                        button.onclick = function() {
+                            window.location.href = link;
+                        };
+                        cellaction.appendChild(button);
+
+                        
+
+                        if(state==0)
+                        {
+                            const celstatus = document.createElement('div');
+                            celstatus.style.display = 'flex' ;
+                            const button = document.createElement('button');
+                            button.textContent ='Approved';
+                            button.classList.add('btn', 'btn-success', 'btn-sm', 'w-lg', 'btn-block');
+                            button.style.width = button.scrollWidth + 'px';
+                            celstatus.appendChild(button);
+                            const buttons = document.createElement('button');
+                            buttons.textContent ='Rejected';
+                            buttons.classList.add('btn', 'btn-danger', 'btn-sm', 'w-lg', 'btn-block');
+                            buttons.style.width = 20 + 'px';
+                            celstatus.appendChild(buttons);
+                            cellstatus.appendChild(celstatus);
+
+                            button.addEventListener('click', () => {
+                                const formData = 'approved';
+                                sendFormDataToServer(formData,userId,points,createdTimestamp);
+                            });
+                            
+                            // Event listener for Rejected button
+                            buttons.addEventListener('click', () => {
+                                 // 'status' is the key, 'rejected' is the value
+                                const formData = 'rejected';
+                                sendFormDataToServer(formData,userId,points,createdTimestamp);
+                            });
+                        }
+                        if(state==1)
+                        {
+                            const buttn = document.createElement('button');
+                            buttn.textContent ='Rejected';
+                            buttn.classList.add('btn', 'btn-danger', 'btn-sm', 'w-lg', 'btn-block');
+                            buttn.style.width = buttn.scrollWidth + 'px';
+                            cellstatus.appendChild(buttn);
+                        }                        // Append the button to the cellAction cell
+                        if(state==2)
+                        {
+                            const butt = document.createElement('button');
+                            butt.textContent ='Approved';
+                            butt.classList.add('btn', 'btn-success', 'btn-sm', 'w-lg', 'btn-block');
+                            butt.style.width = butt.scrollWidth + 'px';
+                            cellstatus.appendChild(butt);
+                        } 
+                    });
+                    await Promise.all(promises);
+                }
+        } catch (error) {
+            console.error('Error getting document:', error);
+        }   
+    }
+
+    async function sendFormDataToServer(formata, userId, points, createdTimestamp) {
+        // Send a fetch request to the server endpoint
+        const formData = new FormData();
+        formData.append('status', formata);
+        formData.append('userId', userId);
+        formData.append('points', points);
+        formData.append('timestamp', createdTimestamp);
+        try {
+            const response = await fetch("https://km-adj5.onrender.com/arwith", {
+                method: "POST",
+                body: formData,
+            });
+
+            if (response.ok) {
+                window.location.reload();
+                console.log("Processed");
+            } else {
+                console.error("Failed");
+            }
+        } catch (error) {
+            console.error("Error :", error);
+        }
+    }
+// Call the function to populate form fields
+    populateFormFields();   
+
+</script>
     <script src="https://admin2132.github.io/kalyanmatkavip/assets/js/pages/datatables.init.js"></script>
     <script src="https://admin2132.github.io/kalyanmatkavip/assets/libs/datatables/datatables.min.js"></script>
     <script src="https://admin2132.github.io/kalyanmatkavip/assets/js/pages/dashboard.init.js"></script>
