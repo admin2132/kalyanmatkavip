@@ -288,6 +288,13 @@
                                                    placeholder="Enter Withdraw Message"
                                                    name="withdraw_message" id="withdraw_message">
                                         </div>
+
+                                        <div class="form-group col-md-4">
+                                            <label class="col-form-label"><strong>Telegram</strong></label>
+                                            <input type="text" class="form-control"
+                                                   placeholder="Enter Telegram"
+                                                   name="telegram" id="telegram">
+                                        </div>
                                     </div>
                                     <div class="form-group mt-4 ">
                                         <button type="submit" class="btn btn-primary waves-light m-t-10" id="submitBtn"
@@ -506,6 +513,7 @@
                 document.getElementById('mobile').value = data.mo_number || '';
                 document.getElementById('whatsapp').value = data.wa_number || '';
                 document.getElementById('withdraw_message').value = data.withdraw_time || '';
+                document.getElementById('telegram').value = data.telegram || '';
             } else {
                 console.log('No such document!');
             }

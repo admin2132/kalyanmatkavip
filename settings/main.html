@@ -379,6 +379,19 @@
                                                 <option value=false>Unapproved</option>
                                             </select>
                                         </div> 
+
+                                        <div class="form-group col-md-4">
+                                            <label for="open_time">Open Withdraw Time</label>
+                                            <input required name="open_time" id="open_time" class="form-control digits" type="time"
+                                                   >
+        
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="close_time">Close Withdraw Time</label>
+                                            <input required name="close_time" id="close_time" class="form-control digits"
+                                                   type="time"
+                                                   >
+                                        </div>
                                         <div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary waves-light m-t-10">Submit</button>
@@ -557,6 +570,9 @@
                     document.getElementById("welcome_bonus").value = data.welcome || "";
                     document.getElementById("max_with_amt").value = data.maxw || "";
                     document.getElementById("min_with_amt").value = data.minw || "";
+
+                    document.getElementById("open_time").value = data.openwith || "";
+                    document.getElementById("close_time").value = data.closewith || "";
                     var selectElement = document.getElementById("appun");
 
                     // Set selected option based on data.approved value
