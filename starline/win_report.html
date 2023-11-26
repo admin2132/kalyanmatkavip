@@ -551,10 +551,11 @@
                     const settingsRef = collection(db, 'win_history_sg_admin');
                     const q = query(settingsRef, where('game_name', '==', name),where('timestamp', '>=', startOfDay), where('timestamp', '<=', endOfDay));
                     const querySnapshot = await getDocs(q);
+                    
                     const tableBody = document.getElementById('bidHistory').getElementsByTagName('tbody')[0];
                     tableBody.innerHTML = ''; // Clear the table body before populating new data
-            
                     let rowNumber = 1;
+
                     if (querySnapshot.empty) {
                         console.log('No matching documents.');
                         return;
@@ -587,7 +588,6 @@
             }   
         }
     
-    // Call the function to populate form fields
         populateFormFields();   
         }
     </script>

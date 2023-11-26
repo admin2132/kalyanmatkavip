@@ -305,8 +305,14 @@
         <h4 class="font-size-18">Withdraw Request List</h4>
         <div class="card">
             <div class="card-body">
+                
                 <div class="table-responsive">
-                    <table id="withdrawReqList" class="table table-bordered">
+                    <div class="mb-3">
+                        <label for="searchInput" class="form-label">Search:</label>
+                        <input type="text" class="form-control" id="searchInput" placeholder="Enter upi">
+                    </div>
+                    
+                    <table id="withdrawReqLists" class="table table-bordered">
                         <thead>
                         <tr>
                             <th>#</th>
@@ -457,7 +463,7 @@
                 const settingsRef = collection(db, 'withdraw_points');
                 const q = query(settingsRef);
                 const querySnapshot = await getDocs(q);
-                const tableBody = document.getElementById('withdrawReqList').getElementsByTagName('tbody')[0];
+                const tableBody = document.getElementById('withdrawReqLists').getElementsByTagName('tbody')[0];
                 tableBody.innerHTML = ''; // Clear the table body before populating new data
         
                 let rowNumber = 1;
@@ -570,6 +576,23 @@
 // Call the function to populate form fields
     populateFormFields();   
 
+</script>
+
+<script>
+    document.getElementById("searchInput").addEventListener("input", function () {
+        const searchTerm = this.value.toLowerCase();
+        const tableRows = document.getElementById('withdrawReqLists').getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+    
+        for (let i = 0; i < tableRows.length; i++) {
+            const username = tableRows[i].getElementsByTagName('td')[1].textContent.toLowerCase();
+    
+            if (username.includes(searchTerm)) {
+                tableRows[i].style.display = "";
+            } else {
+                tableRows[i].style.display = "none";
+            }
+        }
+    });    
 </script>
     <script src="https://admin2132.github.io/kalyanmatkavip/assets/js/pages/datatables.init.js"></script>
     <script src="https://admin2132.github.io/kalyanmatkavip/assets/libs/datatables/datatables.min.js"></script>
