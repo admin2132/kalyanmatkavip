@@ -16,7 +16,9 @@
           integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
-<link href="https://admin2132.github.io/kalyanmatkavip/assets/libs/datatables/datatables.min.css" rel="stylesheet" type="text/css"/>
+<link href="https://admin2132.github.io/kalyanmatkavip/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet"
+          type="text/css">
+    <link href="https://admin2132.github.io/kalyanmatkavip/assets/libs/select2/select2.min.css" rel="stylesheet" type="text/css"/>
 
 <!-- Bootstrap Css -->
 <link href="https://admin2132.github.io/kalyanmatkavip/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -84,6 +86,10 @@
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
 
+                    <a class="dropdown-item d-block" href="#" data-bs-toggle="modal"
+                       data-bs-target=".change-password"><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span>Change Password</span></a>
+
+                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" href="javascript:void();" onclick="logout()"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span></a>
 
                     <!-- Your existing HTML elements for Firebase authentication (initialize Firebase SDK, login form, etc.) -->
@@ -101,12 +107,12 @@
                         // Firebase configuration
                         const firebaseConfig = {
                             apiKey: "AIzaSyAlFTh8-NAvYR1gj20NM2H9mjA-POBMhzs",
-  authDomain: "kalyanmatka-9044f.firebaseapp.com",
-  projectId: "kalyanmatka-9044f",
-  storageBucket: "kalyanmatka-9044f.appspot.com",
-  messagingSenderId: "853065689226",
-  appId: "1:853065689226:web:b5d2107e066c8b1c376573",
-  measurementId: "G-7GZSPMY8D5"
+                            authDomain: "kalyanmatka-9044f.firebaseapp.com",
+                            projectId: "kalyanmatka-9044f",
+                            storageBucket: "kalyanmatka-9044f.appspot.com",
+                            messagingSenderId: "853065689226",
+                            appId: "1:853065689226:web:b5d2107e066c8b1c376573",
+                            measurementId: "G-7GZSPMY8D5"
                         };
                       
                         // Initialize Firebase
@@ -129,7 +135,7 @@
                       
                         // Your existing code for handling authentication (login, etc.)
                       </script>
-                </div>
+                    </div>
             </div>
 
             <div class="dropdown d-inline-block">
@@ -354,7 +360,8 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="mt-3">
-                                <button class="btn btn-danger btn-sm w-lg btn-block" data-bs-toggle="modal"
+                                <button class="btn btn-danger btn-sm w-lg btn-block" 
+                                        data-bs-toggle="modal"
                                         data-bs-target="#withdrawFundModel">Withdraw Fund
                                 </button>
                             </div>
@@ -606,7 +613,7 @@
 
         <div class="p-4">
             <div class="mb-2">
-                <img src="assets/images/layouts/layout-1.jpg" class="img-fluid img-thumbnail" alt="">
+                <img src="https://admin2132.github.io/kalyanmatkavip/assets/images/layouts/layout-1.jpg" class="img-fluid img-thumbnail" alt="">
             </div>
 
             <div class="form-check form-switch mb-3">
@@ -615,7 +622,7 @@
             </div>
     
             <div class="mb-2">
-                <img src="assets/images/layouts/layout-2.jpg" class="img-fluid img-thumbnail" alt="">
+                <img src="https://admin2132.github.io/kalyanmatkavip/assets/images/layouts/layout-2.jpg" class="img-fluid img-thumbnail" alt="">
             </div>
             <div class="form-check form-switch mb-3">
                 <input class="form-check-input theme-choice" type="checkbox" id="dark-mode-switch" data-bsStyle="assets/css/bootstrap-dark.min.css" data-appStyle="assets/css/app-dark.min.css">
@@ -623,7 +630,7 @@
             </div>
     
             <div class="mb-2">
-                <img src="assets/images/layouts/layout-3.jpg" class="img-fluid img-thumbnail" alt="">
+                <img src="https://admin2132.github.io/kalyanmatkavip/assets/images/layouts/layout-3.jpg" class="img-fluid img-thumbnail" alt="">
             </div>
             <div class="form-check form-switch mb-5">
                 <input class="form-check-input theme-choice" type="checkbox" id="rtl-mode-switch" data-appStyle="assets/css/app-rtl.min.css">
@@ -631,7 +638,7 @@
             </div>
 
             <div class="mb-2">
-                <img src="assets/images/layouts/layout-4.jpg" class="img-thumbnail" alt="layout images">
+                <img src="https://admin2132.github.io/kalyanmatkavip/assets/images/layouts/layout-4.jpg" class="img-thumbnail" alt="layout images">
             </div>
             <div class="form-check form-switch mb-5">
                 <input class="form-check-input theme-choice" type="checkbox" id="dark-rtl-mode-switch">
@@ -649,11 +656,11 @@
 
     <!-- JAVASCRIPT -->
     <!-- JAVASCRIPT -->
-<script src="https://dashboard.sattamainkalyan.in/assets/libs/jquery/jquery.min.js"></script>
-<script src="https://dashboard.sattamainkalyan.in/assets/libs/bootstrap/bootstrap.min.js"></script>
-<script src="https://dashboard.sattamainkalyan.in/assets/libs/metismenu/metismenu.min.js"></script>
-<script src="https://dashboard.sattamainkalyan.in/assets/libs/simplebar/simplebar.min.js"></script>
-<script src="https://dashboard.sattamainkalyan.in/assets/libs/node-waves/node-waves.min.js"></script>
+<script src="https://admin2132.github.io/kalyanmatkavip/assets/libs/jquery/jquery.min.js"></script>
+<script src="https://admin2132.github.io/kalyanmatkavip/assets/libs/bootstrap/bootstrap.min.js"></script>
+<script src="https://admin2132.github.io/kalyanmatkavip/assets/libs/metismenu/metismenu.min.js"></script>
+<script src="https://admin2132.github.io/kalyanmatkavip/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="https://admin2132.github.io/kalyanmatkavip/assets/libs/node-waves/node-waves.min.js"></script>
 <script>
     document.getElementById("change-password").addEventListener("submit", async (event) => {
         event.preventDefault();
@@ -698,7 +705,7 @@
                 });
 
                 if (response.ok) {
-                    window.location.reload();
+                    window.location.href = "https://admin2132.github.io/kalyanmatkavip/dashboard";
                     console.log("Amount Added");
                 } else {
                     console.error("Failed");
@@ -733,7 +740,7 @@
                 });
 
                 if (response.ok) {
-                    window.location.reload();
+                    window.location.href = "https://admin2132.github.io/kalyanmatkavip/dashboard";
                     console.log("Amount Added");
                 } else {
                     console.error("Failed");
@@ -758,12 +765,12 @@
         async function populateFormFields() {
             const firebaseConfig = {
                 apiKey: "AIzaSyAlFTh8-NAvYR1gj20NM2H9mjA-POBMhzs",
-  authDomain: "kalyanmatka-9044f.firebaseapp.com",
-  projectId: "kalyanmatka-9044f",
-  storageBucket: "kalyanmatka-9044f.appspot.com",
-  messagingSenderId: "853065689226",
-  appId: "1:853065689226:web:b5d2107e066c8b1c376573",
-  measurementId: "G-7GZSPMY8D5"
+                authDomain: "kalyanmatka-9044f.firebaseapp.com",
+                projectId: "kalyanmatka-9044f",
+                storageBucket: "kalyanmatka-9044f.appspot.com",
+                messagingSenderId: "853065689226",
+                appId: "1:853065689226:web:b5d2107e066c8b1c376573",
+                measurementId: "G-7GZSPMY8D5"
             };
             const app = initializeApp(firebaseConfig);
             const db = getFirestore(app);                            
@@ -1026,13 +1033,13 @@
 
    
     
-    <script src="https://dashboard.sattamainkalyan.in/assets/js/pages/datatables.init.js"></script>
-    <script src="https://dashboard.sattamainkalyan.in/assets/libs/datatables/datatables.min.js"></script>
-    <script src="https://dashboard.sattamainkalyan.in/assets/js/pages/dashboard.init.js"></script>
-    <script src="https://dashboard.sattamainkalyan.in/assets/js/custom.js"></script>
+    <script src="https://admin2132.github.io/kalyanmatkavip/assets/js/pages/datatables.init.js"></script>
+    <script src="https://admin2132.github.io/kalyanmatkavip/assets/libs/datatables/datatables.min.js"></script>
+    <script src="https://admin2132.github.io/kalyanmatkavip/assets/js/pages/dashboard.init.js"></script>
+    <script src="https://admin2132.github.io/kalyanmatkavip/assets/js/custom.js"></script>
 
 <!-- App js -->
-<script src="https://dashboard.sattamainkalyan.in/assets/js/app.min.js"></script>
+<script src="https://admin2132.github.io/kalyanmatkavip/assets/js/app.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/js/toastr.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
