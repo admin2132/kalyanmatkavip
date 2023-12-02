@@ -442,7 +442,7 @@
 
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-    import {  getFirestore, collection,doc, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
+    import {  getFirestore, collection,doc, query,orderBy, where, getDocs,getDoc } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
 
     // 
 // Function to fetch data from Firestore and populate the form fields
@@ -461,7 +461,7 @@
 
         try {
                 const settingsRef = collection(db, 'withdraw_points');
-                const q = query(settingsRef);
+                const q = query(settingsRef, orderBy("createdTimestamp","desc"));
                 const querySnapshot = await getDocs(q);
                 const tableBody = document.getElementById('withdrawReqLists').getElementsByTagName('tbody')[0];
                 tableBody.innerHTML = ''; // Clear the table body before populating new data
@@ -472,76 +472,88 @@
                     const promises = querySnapshot.docs.map(async doc => {
                         const data = doc.data();
                         const { createdTimestamp, points,state,upi , userId } = data;
-                        const newRow = tableBody.insertRow();
+
+                        const settaaingsRef = collection(db, 'users');
+                        const aq = query(settaaingsRef, where("userId",'==',userId));
+                        const aquerySnapshot = await getDocs(aq);
+                        let bellb;
+                        aquerySnapshot.forEach(doc => {
+                            bellb = doc.data().userCredits;
+                        });
                         
-                        const cellNumber = newRow.insertCell();
-                        const cellphone = newRow.insertCell();
-                        const cellamt = newRow.insertCell();
-                        const celldate = newRow.insertCell();
-                        const cellstatus = newRow.insertCell();
-                        const cellaction = newRow.insertCell();
-
-                        cellNumber.textContent = rowNumber++;
-                        cellphone.textContent = upi;
-                        cellamt.textContent = points;
-                        celldate.textContent = createdTimestamp.toDate().toDateString().substring(0, 11);
-                        const button = document.createElement('button');
-                        button.classList.add("mdi", "mdi-eye", "font-size-18", "text-primary");
-                        button.style.border = 'none'; /* Remove border */
-                        button.style.backgroundColor = '#ffffff'; /* Set background color to transparent */
-                        button.style.padding = '0';
-                        const link = `https://admin2132.github.io/kalyanmatkavip/user/profile/userProfile.html?userId=${userId}`;
-                        button.onclick = function() {
-                            window.location.href = link;
-                        };
-                        cellaction.appendChild(button);
-
-                        
-
-                        if(state==0)
+                        if(bellb>=points)
                         {
-                            const celstatus = document.createElement('div');
-                            celstatus.style.display = 'flex' ;
-                            const button = document.createElement('button');
-                            button.textContent ='Approved';
-                            button.classList.add('btn', 'btn-success', 'btn-sm', 'w-lg', 'btn-block');
-                            button.style.width = button.scrollWidth + 'px';
-                            celstatus.appendChild(button);
-                            const buttons = document.createElement('button');
-                            buttons.textContent ='Rejected';
-                            buttons.classList.add('btn', 'btn-danger', 'btn-sm', 'w-lg', 'btn-block');
-                            buttons.style.width = 20 + 'px';
-                            celstatus.appendChild(buttons);
-                            cellstatus.appendChild(celstatus);
-
-                            button.addEventListener('click', () => {
-                                const formData = 'approved';
-                                sendFormDataToServer(formData,userId,points,createdTimestamp);
-                            });
+                            const newRow = tableBody.insertRow();
                             
-                            // Event listener for Rejected button
-                            buttons.addEventListener('click', () => {
-                                 // 'status' is the key, 'rejected' is the value
-                                const formData = 'rejected';
-                                sendFormDataToServer(formData,userId,points,createdTimestamp);
-                            });
+                            const cellNumber = newRow.insertCell();
+                            const cellphone = newRow.insertCell();
+                            const cellamt = newRow.insertCell();
+                            const celldate = newRow.insertCell();
+                            const cellstatus = newRow.insertCell();
+                            const cellaction = newRow.insertCell();
+
+                            cellNumber.textContent = rowNumber++;
+                            cellphone.textContent = upi;
+                            cellamt.textContent = points;
+                            celldate.textContent = createdTimestamp.toDate().toDateString().substring(0, 11);
+                            const button = document.createElement('button');
+                            button.classList.add("mdi", "mdi-eye", "font-size-18", "text-primary");
+                            button.style.border = 'none'; /* Remove border */
+                            button.style.backgroundColor = '#ffffff'; /* Set background color to transparent */
+                            button.style.padding = '0';
+                            const link = `https://admin2132.github.io/kalyanmatkavip/user/profile/userProfile.html?userId=${userId}`;
+                            button.onclick = function() {
+                                window.location.href = link;
+                            };
+                            cellaction.appendChild(button);
+
+                            
+
+                            if(state==0)
+                            {
+                                const celstatus = document.createElement('div');
+                                celstatus.style.display = 'flex' ;
+                                const button = document.createElement('button');
+                                button.textContent ='Approved';
+                                button.classList.add('btn', 'btn-success', 'btn-sm', 'w-lg', 'btn-block');
+                                button.style.width = button.scrollWidth + 'px';
+                                celstatus.appendChild(button);
+                                const buttons = document.createElement('button');
+                                buttons.textContent ='Rejected';
+                                buttons.classList.add('btn', 'btn-danger', 'btn-sm', 'w-lg', 'btn-block');
+                                buttons.style.width = 20 + 'px';
+                                celstatus.appendChild(buttons);
+                                cellstatus.appendChild(celstatus);
+
+                                button.addEventListener('click', () => {
+                                    const formData = 'approved';
+                                    sendFormDataToServer(formData,userId,points,createdTimestamp);
+                                });
+                                
+                                // Event listener for Rejected button
+                                buttons.addEventListener('click', () => {
+                                    // 'status' is the key, 'rejected' is the value
+                                    const formData = 'rejected';
+                                    sendFormDataToServer(formData,userId,points,createdTimestamp);
+                                });
+                            }
+                            if(state==1)
+                            {
+                                const buttn = document.createElement('button');
+                                buttn.textContent ='Rejected';
+                                buttn.classList.add('btn', 'btn-danger', 'btn-sm', 'w-lg', 'btn-block');
+                                buttn.style.width = buttn.scrollWidth + 'px';
+                                cellstatus.appendChild(buttn);
+                            }                        // Append the button to the cellAction cell
+                            if(state==2)
+                            {
+                                const butt = document.createElement('button');
+                                butt.textContent ='Approved';
+                                butt.classList.add('btn', 'btn-success', 'btn-sm', 'w-lg', 'btn-block');
+                                butt.style.width = butt.scrollWidth + 'px';
+                                cellstatus.appendChild(butt);
+                            } 
                         }
-                        if(state==1)
-                        {
-                            const buttn = document.createElement('button');
-                            buttn.textContent ='Rejected';
-                            buttn.classList.add('btn', 'btn-danger', 'btn-sm', 'w-lg', 'btn-block');
-                            buttn.style.width = buttn.scrollWidth + 'px';
-                            cellstatus.appendChild(buttn);
-                        }                        // Append the button to the cellAction cell
-                        if(state==2)
-                        {
-                            const butt = document.createElement('button');
-                            butt.textContent ='Approved';
-                            butt.classList.add('btn', 'btn-success', 'btn-sm', 'w-lg', 'btn-block');
-                            butt.style.width = butt.scrollWidth + 'px';
-                            cellstatus.appendChild(butt);
-                        } 
                     });
                     await Promise.all(promises);
                 }
