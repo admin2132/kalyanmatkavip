@@ -316,6 +316,7 @@
                         <thead>
                         <tr>
                             <th>#</th>
+                            <th>Username</th>
                             <th>Upi</th>
                             <th>Amount</th>
                             <th>Date</th>
@@ -477,15 +478,17 @@
                         const aq = query(settaaingsRef, where("userId",'==',userId));
                         const aquerySnapshot = await getDocs(aq);
                         let bellb;
+                        let use;
                         aquerySnapshot.forEach(doc => {
                             bellb = doc.data().userCredits;
+                            use = doc.data().username;
                         });
-                        
                         if(bellb>=points)
                         {
                             const newRow = tableBody.insertRow();
                             
                             const cellNumber = newRow.insertCell();
+                            const cellusername = newRow.insertCell();
                             const cellphone = newRow.insertCell();
                             const cellamt = newRow.insertCell();
                             const celldate = newRow.insertCell();
@@ -493,6 +496,7 @@
                             const cellaction = newRow.insertCell();
 
                             cellNumber.textContent = rowNumber++;
+                            cellusername.textContent = use;
                             cellphone.textContent = upi;
                             cellamt.textContent = points;
                             celldate.textContent = createdTimestamp.toDate().toDateString().substring(0, 11);
