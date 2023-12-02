@@ -105,12 +105,12 @@
                         // Firebase configuration
                         const firebaseConfig = {
                             apiKey: "AIzaSyAlFTh8-NAvYR1gj20NM2H9mjA-POBMhzs",
-    authDomain: "kalyanmatka-9044f.firebaseapp.com",
-    projectId: "kalyanmatka-9044f",
-    storageBucket: "kalyanmatka-9044f.appspot.com",
-    messagingSenderId: "853065689226",
-    appId: "1:853065689226:web:b5d2107e066c8b1c376573",
-    measurementId: "G-7GZSPMY8D5"
+                            authDomain: "kalyanmatka-9044f.firebaseapp.com",
+                            projectId: "kalyanmatka-9044f",
+                            storageBucket: "kalyanmatka-9044f.appspot.com",
+                            messagingSenderId: "853065689226",
+                            appId: "1:853065689226:web:b5d2107e066c8b1c376573",
+                            measurementId: "G-7GZSPMY8D5"
                         };
                       
                         // Initialize Firebase
@@ -485,7 +485,7 @@
 <script type = "module">
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-    import {  getFirestore, collection,doc, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
+    import {  getFirestore, collection,doc, query,orderBy, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
 
     document.getElementById('AutoDepositHistory').onsubmit = function () {
         event.preventDefault();
@@ -525,7 +525,7 @@
                     //const endTimestamp = endOfDay.getTime();
 
                     const settingsRef = collection(db, 'deposit');
-                    const q = query(settingsRef, where('timestamp', '>=', startOfDay), where('timestamp', '<=', endOfDay));
+                    const q = query(settingsRef, where('timestamp', '>=', startOfDay), where('timestamp', '<=', endOfDay), orderBy("timestamp","desc"));
                     const querySnapshot = await getDocs(q);
                     const tableBody = document.getElementById('depositHistory').getElementsByTagName('tbody')[0];
                     tableBody.innerHTML = ''; // Clear the table body before populating new data
@@ -534,7 +534,7 @@
                     if (!querySnapshot.empty) {
                         querySnapshot.forEach(doc => {
                             const data = doc.data();
-                            const { credits,timestamp, mno,username } = data;
+                            const { credits,timestamp, mno,username, userId } = data;
                             const newRow = tableBody.insertRow();
                             
                             const cellNumber = newRow.insertCell();
@@ -544,12 +544,13 @@
                             const cellcredits = newRow.insertCell();
                             
                             cellNumber.textContent = rowNumber++;
-                            celldate.textContent = timestamp.toDate().toDateString().substring(0,11);
+                            celldate.textContent = timestamp.toDate().getHours() + ":" + timestamp.toDate().getMinutes()+" " + timestamp.toDate().toDateString().substring(0,11);
                             cellmno.textContent = mno;
                             cellusername.textContent = username;
                             cellcredits.textContent = credits;
                             val=val+credits;
-                            });
+                            
+                        });
                     }  
                     
                     document.getElementById('total_amount').innerHTML = 'Total Amount ' + val;

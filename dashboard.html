@@ -965,7 +965,7 @@
 </script>
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-    import {  getFirestore, collection,doc, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
+    import {  getFirestore, collection,doc, query,orderBy, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
 
 // Function to fetch data from Firestore and populate the form fields
     async function populateFormFields() {
@@ -1059,7 +1059,7 @@
                 });
             }
             const settinRef = collection(db, 'deposit');
-            const sq = query(settinRef);
+            const sq = query(settinRef, orderBy("timestamp","desc"));
             const quernapshot = await getDocs(sq);
             const tableBody = document.getElementById('depositHistory').getElementsByTagName('tbody')[0];
             tableBody.innerHTML = ''; // Clear the table body before populating new data
@@ -1078,7 +1078,7 @@
                     const cellcredits = newRow.insertCell();
                     
                     cellNumber.textContent = rowNumber++;
-                    celldate.textContent = timestamp.toDate().toDateString().substring(0,11);
+                    celldate.textContent = timestamp.toDate().getHours() + ":" + timestamp.toDate().getMinutes()+" " + timestamp.toDate().toDateString().substring(0,11);
                     cellmno.textContent = mno;
                     cellusername.textContent = username;
                     cellcredits.textContent = credits;
