@@ -803,7 +803,7 @@
 </script>
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-    import {  getFirestore, collection,doc, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
+    import {  getFirestore, collection,doc, query,orderBy, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
 
     // 
 // Function to fetch data from Firestore and populate the form fields
@@ -824,7 +824,7 @@
 
         try {
                 const settingsRef = collection(db, 'game_names');
-                const q = query(settingsRef, where('exists', '==', true));
+                const q = query(settingsRef, orderBy("timestamp"));
                 const querySnapshot = await getDocs(q);
                 if (!querySnapshot.empty) {
                     querySnapshot.forEach(doc => {
