@@ -441,7 +441,7 @@
 </script>
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-    import {  getFirestore, collection,doc, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
+    import {  getFirestore, collection,doc,orderBy, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js';
 
     // 
 // Function to fetch data from Firestore and populate the form fields
@@ -460,7 +460,7 @@
 
         try {
                 const settingsRef = collection(db, 'users');
-                const q = query(settingsRef, where('approved', '==', true));
+                const q = query(settingsRef, where('approved', '==', true),orderBy("createdTimestamp","desc"));
                 const querySnapshot = await getDocs(q);
                 const tableBody = document.getElementById('userLists').getElementsByTagName('tbody')[0];
                 tableBody.innerHTML = ''; // Clear the table body before populating new data
