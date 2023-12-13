@@ -749,6 +749,27 @@
             <h5>Day Win List</h5>
 
             <div class="table-responsive">
+                <table id="daybidlist" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Username</th>
+                        <th>Game Name</th>
+                        <th>Game Type</th>
+                        <th>(₹) Amount</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5>Day Win List</h5>
+
+            <div class="table-responsive">
                 <table id="daywinlist" class="table table-striped">
                     <thead>
                     <tr>
@@ -1139,15 +1160,31 @@
                 //const startTimestamp = startOfDay.getTime();
                 //const endTimestamp = endOfDay.getTime();
 
+                const tableBod = document.getElementById('daybidlist').getElementsByTagName('tbody')[0];
+                tableBod.innerHTML = ''; // Clear the table body before populating new data
+                let rowNum = 1;
                 const settingsRef = collection(db, 'bid_history_admin');
                 const q = query(settingsRef, where('timestamp', '>=', startOfDay), where('timestamp', '<=', endOfDay));
                 const querySnapshot = await getDocs(q);
-            
 
                 var bid = 0;
                 if (!querySnapshot.empty) {
                     querySnapshot.forEach(doc => {
-                        const points = doc.data().points;
+                        const data = doc.data();
+                        const { points ,game_name, type,username } = data;
+                        const newRow = tableBod.insertRow();
+                        
+                        const cellNumber = newRow.insertCell();
+                        const cellusername = newRow.insertCell();
+                        const cellgame = newRow.insertCell();
+                        const celltype = newRow.insertCell();
+                        const cellpoint = newRow.insertCell();
+                        
+                        cellNumber.textContent = rowNum++;
+                        cellusername.textContent = username;
+                        cellgame.textContent = game_name;
+                        celltype.textContent = type;
+                        cellpoint.textContent = points;
                         bid=bid+points;
                     });
                 }
@@ -1257,7 +1294,6 @@
                 const settingsRef = collection(db, 'bid_history_admin');
                 const q = query(settingsRef, where('game_name', '==', name),where('timestamp', '>=', startOfDay), where('timestamp', '<=', endOfDay));
                 const querySnapshot = await getDocs(q);
-            
 
                 var bid = 0;
                 if (!querySnapshot.empty) {
